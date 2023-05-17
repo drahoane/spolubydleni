@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="expensesRowModel" type="com.anetsapplication.app.modules.expenses.data.model.ExpensesRowModel"/>
+    </data>
+    <LinearLayout android:id="@+id/linearStatelayer"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal" style="@style/groupStylegray_50">
+        <ImageView android:id="@+id/imageThumbnailThree"
+            android:layout_height="@dimen/_56pxh"
+            android:layout_marginBottom="@dimen/_8pxv"
+            android:layout_marginStart="@dimen/_16pxh"
+            android:layout_marginTop="@dimen/_8pxv"
+            android:layout_width="@dimen/_56pxh"
+            android:scaleType="fitXY"
+            imageRes="@{@drawable/img_thumbnail}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_thumbnail"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearContent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_16pxv"
+            android:layout_marginEnd="@dimen/_142pxh"
+            android:layout_marginStart="@dimen/_16pxh"
+            android:layout_marginTop="@dimen/_15pxv"
+            android:layout_weight="0.74" android:layout_width="0dp" android:orientation="vertical">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtHeadlineFour"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_width="wrap_content"
+                android:lineSpacingExtra="@dimen/_3pxh"
+                android:singleLine="true"
+                android:text="@{expensesRowModel.txtHeadlineFour}"
+                style="@style/txtRobotoregular16_2" tools:text="@string/lbl_rent"/>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtSupportingtextThree"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3pxv"
+                android:layout_width="match_parent"
+                android:lineSpacingExtra="@dimen/_3pxh"
+                android:singleLine="true"
+                android:text="@{expensesRowModel.txtSupportingtextThree}"
+                style="@style/txtRobotoregular14" tools:text="@string/msg_honza_nov_paid"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

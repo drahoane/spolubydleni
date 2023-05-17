@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="membersRowModel" type="com.anetsapplication.app.modules.members.data.model.MembersRowModel"/>
+    </data>
+    <LinearLayout android:id="@+id/linearRowavatars3dav"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" android:orientation="horizontal">
+        <ImageView android:id="@+id/imageAvatars3dav"
+            android:layout_height="@dimen/_88pxh"
+            android:layout_width="@dimen/_88pxh"
+            android:scaleType="fitXY"
+            imageRes="@{@drawable/img_avatars3dav_88x88}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_avatars3dav_88x88"/>
+        <LinearLayout android:id="@+id/linearRowcristineolive"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_34pxv"
+            android:layout_marginStart="@dimen/_64pxh"
+            android:layout_marginTop="@dimen/_34pxv"
+            android:layout_weight="0.62" android:layout_width="0dp" android:orientation="horizontal">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtCristineOlive"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.87" android:layout_width="0dp"
+                android:lineSpacingExtra="@dimen/_3pxh"
+                android:singleLine="true"
+                android:text="@{membersRowModel.txtCristineOlive}"
+                style="@style/txtRobotoregular16_1" tools:text="@string/lbl_cristine_olive"/>
+            <ImageView android:id="@+id/imageClose"
+                android:layout_height="@dimen/_14pxh"
+                android:layout_marginBottom="@dimen/_2pxv"
+                android:layout_marginStart="@dimen/_37pxh"
+                android:layout_marginTop="@dimen/_2pxv"
+                android:layout_width="@dimen/_14pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_close_black_900"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_close_black_900"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

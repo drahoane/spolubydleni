@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="notificationsRowModel" type="com.anetsapplication.app.modules.notifications.data.model.NotificationsRowModel"/>
+    </data>
+    <LinearLayout android:id="@+id/linearStatelayer1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal" style="@style/groupStylegray_50">
+        <ImageView android:id="@+id/imageUserOne"
+            android:layout_height="@dimen/_16pxh"
+            android:layout_marginBottom="@dimen/_56pxv"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_16pxv"
+            android:layout_width="@dimen/_16pxh"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_user_gray_800"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_user_gray_800"/>
+        <LinearLayout android:id="@+id/linearRowheadline"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_15pxv"
+            android:layout_marginEnd="@dimen/_21pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_13pxv"
+            android:layout_weight="0.95" android:layout_width="0dp" android:orientation="horizontal">
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearContent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.87" android:layout_width="0dp" android:orientation="vertical">
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtHeadlineOne"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_width="wrap_content"
+                    android:lineSpacingExtra="@dimen/_3pxh"
+                    android:singleLine="true"
+                    android:text="@{notificationsRowModel.txtHeadlineOne}"
+                    style="@style/txtRobotoregular16_2" tools:text="@string/msg_household_invit"/>
+                <TextView android:id="@+id/txtSupportingtext"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_2pxv"
+                    android:layout_width="match_parent"
+                    android:lineSpacingExtra="@dimen/_6pxh"
+                    android:text="@{notificationsRowModel.txtSupportingtext}"
+                    style="@style/txtRobotoregular14" tools:text="@string/msg_you_have_receiv"/>
+            </LinearLayout>
+            <ImageView android:id="@+id/imageCheckmark"
+                android:layout_height="@dimen/_13pxh"
+                android:layout_marginBottom="@dimen/_22pxv"
+                android:layout_marginTop="@dimen/_23pxv"
+                android:layout_width="@dimen/_17pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_checkmark_deep_purple_800"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_checkmark_deep_purple_800"/>
+            <LinearLayout android:id="@+id/linearColumncheckmarkOne"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_21pxv"
+                android:layout_marginStart="@dimen/_22pxh"
+                android:layout_marginTop="@dimen/_5pxv"
+                android:layout_weight="0.07" android:layout_width="0dp" android:orientation="vertical">
+                <LinearLayout android:gravity="center_horizontal"
+                    android:id="@+id/linearStatelayer2"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_9pxh"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical" style="@style/groupStylecornerRadius_5">
+                    <ImageView android:id="@+id/imageCheckmarkOne"
+                        android:layout_gravity="start"
+                        android:layout_height="@dimen/_9pxh"
+                        android:layout_width="@dimen/_12pxh"
+                        android:scaleType="centerCrop"
+                        circular="@{true}"
+                        imageRes="@{@drawable/img_checkmark}"
+                        tools:ignore="ContentDescription" tools:src="@drawable/img_checkmark"/>
+                </LinearLayout>
+                <ImageView android:id="@+id/imageClose"
+                    android:layout_gravity="end"
+                    android:layout_height="@dimen/_14pxh"
+                    android:layout_marginStart="@dimen/_7pxh"
+                    android:layout_marginTop="@dimen/_8pxv"
+                    android:layout_width="@dimen/_14pxh"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_close_deep_purple_800"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_close_deep_purple_800"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

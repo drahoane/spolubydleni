@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="badgesVM" type="com.anetsapplication.app.modules.badges.data.viewmodel.BadgesVM"/>
+    </data>
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearColumnlogo"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/_378pxv"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <ScrollView android:clipToPadding="false"
+            android:fillViewport="true" android:gravity="start"
+            android:id="@+id/scrollViewScrollview"
+            android:layout_height="0dp" android:layout_weight="1" android:layout_width="match_parent">
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearHeader"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical" style="@style/groupStylegray_300">
+                <ImageView android:id="@+id/imageLogo"
+                    android:layout_height="@dimen/_40pxh"
+                    android:layout_marginEnd="@dimen/_52pxh"
+                    android:layout_marginStart="@dimen/_52pxh"
+                    android:layout_marginTop="@dimen/_52pxv"
+                    android:layout_width="@dimen/_40pxh"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_logo"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_logo"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtComponentname"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_52pxh"
+                    android:layout_marginStart="@dimen/_52pxh"
+                    android:layout_marginTop="@dimen/_65pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{badgesVM.badgesModel.txtComponentname}"
+                    style="@style/txtRobotoromanregular80" tools:text="@string/lbl_badges"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtLink"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_52pxh"
+                    android:layout_marginStart="@dimen/_52pxh"
+                    android:layout_marginTop="@dimen/_21pxv"
+                    android:layout_width="wrap_content"
+                    android:lineSpacingExtra="@dimen/_5pxh"
+                    android:singleLine="true"
+                    android:text="@{badgesVM.badgesModel.txtLink}"
+                    style="@style/txtRobotoromanregular24"
+                    textUnderline="true" tools:text="@string/msg_see_design_guid"/>
+                <TextView android:gravity="center_horizontal"
+                    android:id="@+id/txtLanguage"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_20pxv"
+                    android:layout_marginEnd="@dimen/_52pxh"
+                    android:layout_marginStart="@dimen/_52pxh"
+                    android:layout_marginTop="@dimen/_23pxv"
+                    android:layout_width="match_parent"
+                    android:lineSpacingExtra="@dimen/_6pxh"
+                    android:text="@{badgesVM.badgesModel.txtLanguage}"
+                    style="@style/txtRobotoregular18" tools:text="@string/msg_badges_are_used"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

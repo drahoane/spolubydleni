@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest package="com.anetsapplication.app" xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <application android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name" android:largeHeap="true"
+        android:name="com.anetsapplication.app.appcomponents.di.MyApp"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true" android:theme="@style/Theme.MyApp" android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.anetsapplication.app.modules.detail.ui.DetailActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.members.ui.MembersActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.addexpenseequallyerror.ui.AddExpenseEquallyErrorActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.badges.ui.BadgesActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.invite.ui.InviteActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.notifications.ui.NotificationsActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.addexpensebyshares.ui.AddExpenseBySharesActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.addexpenseequally.ui.AddExpenseEquallyActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.settings.ui.SettingsActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.addexpenseunequally.ui.AddExpenseUnequallyActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.signup.ui.SignUpActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.households.ui.HouseholdsActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.create.ui.CreateActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.profile.ui.ProfileActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.expenses.ui.ExpensesActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.anetsapplication.app.modules.editexpense.ui.EditExpenseActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true"
+            android:name="com.anetsapplication.app.modules.login.ui.LoginActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.anetsapplication.app.modules.overview.ui.OverviewActivity" android:screenOrientation="portrait"/>
+    </application>
+</manifest>
