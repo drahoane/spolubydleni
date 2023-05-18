@@ -25,6 +25,8 @@ data class CreateModel(
    */
   var txtLabeltextTwo: String? = MyApp.getInstance().resources.getString(R.string.lbl_households)
   ,
+  var txtPlaceholdertex: String? = MyApp.getInstance().resources.getString(R.string.lbl_households)
+  ,
   /**
    * TODO Replace with dynamic value
    */

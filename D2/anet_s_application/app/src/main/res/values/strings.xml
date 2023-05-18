@@ -18,6 +18,7 @@
 <string name="msg_requested_to_pa">Requested to pay</string>
 <string name="msg_households_invi">Households invite</string>
 <string name="msg_enter_your_pass">Enter your password...</string>
+<string name="msg_enter_household_name">Enter household name...</string>
 <string name="lbl_paid_by">Paid by</string>
 <string name="lbl_sing_up">Sing up</string>
 <string name="lbl_notifications">Notifications</string>
@@ -43,6 +44,7 @@ upload your own image</string>
 <string name="lbl_you_owe_630_k">You owe 630 kč</string>
 <string name="lbl_supporting_text">Supporting text</string>
 <string name="lbl_password">Password</string>
+<string name="lbl_household_name">Household</string>
 <string name="lbl_honza_nov">Honza Nový</string>
 <string name="msg_nicol_thomas_gm">nicol.thomas@gmail.com</string>
 <string name="lbl_you_paid_150_k">You paid 150 kč</string>
@@ -53,6 +55,7 @@ upload your own image</string>
 <string name="msg_type_to_write_c">Type to write comment</string>
 <string name="lbl_badges">Badges</string>
 <string name="msg_cristine_olive3">Cristine Olive owes 267 kč</string>
+<string name="msg_enter_your_username">Enter your username...</string>
 <string name="msg_enter_your_pass2">Enter your password again...</string>
 <string name="msg_water_electri">Water &amp; Electricity</string>
 <string name="lbl_split">Split</string>
@@ -104,6 +107,7 @@ My sweet home</string>
 <string name="lbl_indeed_jana">Indeed Jana</string>
 <string name="lbl_0_00">0,00</string>
 <string name="msg_enter_your_emai">Enter your email...</string>
+<string name="msg_enter_your_login">Enter your login...</string>
 <string name="msg_last_update_30">Last update: 30.3.2023</string>
 <string name="msg_honza_nov_is_o">Honza Nový is owed:
 150 kč</string>

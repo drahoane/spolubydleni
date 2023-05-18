@@ -5,10 +5,13 @@ import com.anetsapplication.app.appcomponents.di.MyApp
 import kotlin.String
 
 data class HouseholdsModel(
+
+  var household_name: String?,
+  var household_date: String?,
   /**
    * TODO Replace with dynamic value
    */
-  var txtHeadline: String? = MyApp.getInstance().resources.getString(R.string.lbl_households)
+  /*var txtHeadline: String? = MyApp.getInstance().resources.getString(R.string.lbl_households)
   ,
   /**
    * TODO Replace with dynamic value
@@ -97,5 +100,5 @@ data class HouseholdsModel(
    * TODO Replace with dynamic value
    */
   var txtLabeltextTwo: String? = MyApp.getInstance().resources.getString(R.string.lbl_notifications)
-
+*/
 )

@@ -7,7 +7,7 @@ import com.anetsapplication.app.modules.households.`data`.model.HouseholdsModel
 import org.koin.core.KoinComponent
 
 class HouseholdsVM : ViewModel(), KoinComponent {
-  val householdsModel: MutableLiveData<HouseholdsModel> = MutableLiveData(HouseholdsModel())
+
 
   var navArguments: Bundle? = null
 }

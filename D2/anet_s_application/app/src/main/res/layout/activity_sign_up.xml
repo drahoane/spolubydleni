@@ -15,7 +15,6 @@
             android:orientation="vertical" style="@style/groupStylewhite_A700cornerRadius">
             <LinearLayout android:id="@+id/linearTopappbar"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10pxv"
                 android:layout_width="match_parent"
                 android:orientation="horizontal" style="@style/groupStyledeep_purple_800">
                 <View android:background="@drawable/rectangle_radius_20"
@@ -45,86 +44,7 @@
                     android:layout_marginTop="@dimen/_12pxv" android:layout_width="@dimen/_40pxh"/>
             </LinearLayout>
             <LinearLayout android:gravity="center_horizontal"
-                android:id="@+id/linearColumn"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_58pxh"
-                android:layout_marginStart="@dimen/_58pxh"
-                android:layout_marginTop="@dimen/_51pxv"
-                android:layout_width="match_parent"
-                android:orientation="vertical" style="@style/groupStylecornerRadius">
-                <LinearLayout android:gravity="center_horizontal"
-                    android:id="@+id/linearColumnsearch"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical" style="@style/groupStylecornerRadius_1">
-                    <LinearLayout android:id="@+id/linearStatelayer"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/_8pxv"
-                        android:layout_marginEnd="@dimen/_4pxh"
-                        android:layout_marginStart="@dimen/_4pxh"
-                        android:layout_marginTop="@dimen/_8pxv"
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal" style="@style/groupStylecornerRadius">
-                        <FrameLayout android:id="@+id/frameStacksearch"
-                            android:layout_height="@dimen/_28pxv"
-                            android:layout_marginBottom="@dimen/_11pxv"
-                            android:layout_marginStart="@dimen/_8pxh" android:layout_width="@dimen/_63pxh">
-                            <LinearLayout
-                                android:id="@+id/linearContainer"
-                                android:layout_gravity="bottom|start"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="@dimen/_10pxh"
-                                android:layout_marginStart="@dimen/_3pxh"
-                                android:layout_marginTop="@dimen/_10pxv"
-                                android:layout_width="match_parent"
-                                android:orientation="vertical" style="@style/groupStylecornerRadius_2">
-                                <ImageView android:gravity="start"
-                                    android:id="@+id/imageSearch"
-                                    android:layout_height="@dimen/_17pxh"
-                                    android:layout_width="match_parent"
-                                    android:scaleType="centerCrop"
-                                    circular="@{true}"
-                                    imageRes="@{@drawable/img_search}"
-                                    tools:ignore="ContentDescription" tools:src="@drawable/img_search"/>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/linearContent"
-                                android:layout_gravity="start"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/_1pxv"
-                                android:layout_width="match_parent" android:orientation="vertical">
-                                <TextView android:ellipsize="end"
-                                    android:gravity="start"
-                                    android:id="@+id/txtLabeltext"
-                                    android:layout_height="wrap_content"
-                                    android:layout_width="match_parent"
-                                    android:lineSpacingExtra="@dimen/_3pxh"
-                                    android:paddingBottom="@dimen/_1pxv"
-                                    android:paddingEnd="@dimen/_4pxh"
-                                    android:paddingStart="@dimen/_4pxh"
-                                    android:singleLine="true"
-                                    android:text="@{signUpVM.signUpModel.txtLabeltext}"
-                                    style="@style/txtSolid" tools:text="@string/lbl_username"/>
-                                <View
-                                    android:background="@color/deep_purple_800"
-                                    android:id="@+id/lineCaret"
-                                    android:layout_gravity="end"
-                                    android:layout_height="@dimen/_16pxv"
-                                    android:layout_marginEnd="@dimen/_26pxh"
-                                    android:layout_marginStart="@dimen/_26pxh"
-                                    android:layout_marginTop="@dimen/_12pxv" android:layout_width="@dimen/_1pxh"/>
-                            </LinearLayout>
-                        </FrameLayout>
-                        <View
-                            android:background="@drawable/rectangle_radius_20"
-                            android:id="@+id/viewContainerTwo"
-                            android:layout_height="@dimen/_40pxh"
-                            android:layout_marginStart="@dimen/_155pxh" android:layout_width="@dimen/_40pxh"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout android:gravity="center_horizontal"
-                android:id="@+id/linearColumnOne"
+                android:id="@+id/linearColumnUsername"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_58pxh"
                 android:layout_marginStart="@dimen/_58pxh"
@@ -132,21 +52,66 @@
                 android:layout_width="match_parent"
                 android:orientation="vertical" style="@style/groupStylecornerRadius">
                 <LinearLayout android:gravity="center_horizontal"
-                    android:id="@+id/linearColumnlabeltextOne"
+                    android:id="@+id/linearColumnsearchUsername"
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:orientation="vertical" style="@style/groupStylecornerRadius_1">
                     <LinearLayout android:gravity="start"
-                        android:id="@+id/linearStatelayer1"
+                        android:id="@+id/linearStatelayerUsername"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/_8pxv"
                         android:layout_marginStart="@dimen/_10pxh"
-                        android:layout_marginTop="@dimen/_8pxv"
+                        android:layout_marginEnd="@dimen/_10pxh"
                         android:layout_width="match_parent"
                         android:orientation="vertical" style="@style/groupStylecornerRadius">
                         <TextView android:ellipsize="end"
-                            android:id="@+id/txtLabeltextOne"
+                            android:id="@+id/txtLabeltextUsername"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5pxh"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_width="wrap_content"
+                            android:lineSpacingExtra="@dimen/_3pxh"
+                            android:paddingBottom="@dimen/_1pxv"
+                            android:singleLine="true"
+                            android:text="@{signUpVM.signUpModel.txtLabeltextOne}"
+                            style="@style/txtSolid" tools:text="@string/lbl_username"/>
+                        <EditText android:ellipsize="end"
+                            android:id="@+id/editUsername"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_9pxv"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_marginTop="@dimen/_11pxv"
+                            android:layout_width="match_parent"
+                            android:lineSpacingExtra="@dimen/_3pxh"
+                            android:singleLine="true"
+                            android:hint="@{signUpVM.signUpModel.txtPlaceholdertex}"
+                            style="@style/txtRobotoregular16" tools:hint="@string/msg_enter_your_username"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal"
+                android:id="@+id/linearColumnPassword"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_58pxh"
+                android:layout_marginStart="@dimen/_58pxh"
+                android:layout_marginTop="@dimen/_12pxv"
+                android:layout_width="match_parent"
+                android:orientation="vertical" style="@style/groupStylecornerRadius">
+                <LinearLayout android:gravity="center_horizontal"
+                    android:id="@+id/linearColumnsearchPassword"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical" style="@style/groupStylecornerRadius_1">
+                    <LinearLayout android:gravity="start"
+                        android:id="@+id/linearStatelayerPassword"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical" style="@style/groupStylecornerRadius">
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtLabeltextPassword"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5pxh"
                             android:layout_marginEnd="@dimen/_10pxh"
                             android:layout_width="wrap_content"
                             android:lineSpacingExtra="@dimen/_3pxh"
@@ -154,8 +119,8 @@
                             android:singleLine="true"
                             android:text="@{signUpVM.signUpModel.txtLabeltextOne}"
                             style="@style/txtSolid" tools:text="@string/lbl_password"/>
-                        <TextView android:ellipsize="end"
-                            android:id="@+id/txtPlaceholdertex"
+                        <EditText android:ellipsize="end"
+                            android:id="@+id/editPassword"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/_9pxv"
                             android:layout_marginEnd="@dimen/_10pxh"
@@ -163,99 +128,98 @@
                             android:layout_width="match_parent"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
-                            android:text="@{signUpVM.signUpModel.txtPlaceholdertex}"
-                            style="@style/txtRobotoregular16" tools:text="@string/msg_enter_your_pass"/>
+                            android:hint="@{signUpVM.signUpModel.txtPlaceholdertex}"
+                            style="@style/txtRobotoregular16" tools:hint="@string/msg_enter_your_pass"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout android:gravity="center_horizontal"
-                android:id="@+id/linearColumnTwo"
+                android:id="@+id/linearColumnRepeatPassword"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_58pxh"
                 android:layout_marginStart="@dimen/_58pxh"
-                android:layout_marginTop="@dimen/_33pxv"
+                android:layout_marginTop="@dimen/_12pxv"
                 android:layout_width="match_parent"
                 android:orientation="vertical" style="@style/groupStylecornerRadius">
                 <LinearLayout android:gravity="center_horizontal"
-                    android:id="@+id/linearColumnlabeltextTwo"
+                    android:id="@+id/linearColumnsearchRepeatPassword"
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:orientation="vertical" style="@style/groupStylecornerRadius_1">
                     <LinearLayout android:gravity="start"
-                        android:id="@+id/linearStatelayer2"
+                        android:id="@+id/linearStatelayerRepeatPassword"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/_8pxv"
                         android:layout_marginStart="@dimen/_10pxh"
-                        android:layout_marginTop="@dimen/_8pxv"
+                        android:layout_marginEnd="@dimen/_10pxh"
                         android:layout_width="match_parent"
                         android:orientation="vertical" style="@style/groupStylecornerRadius">
                         <TextView android:ellipsize="end"
-                            android:id="@+id/txtLabeltextTwo"
+                            android:id="@+id/txtLabeltextRepeatPassword"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_10pxh"
-                            android:layout_width="wrap_content"
-                            android:lineSpacingExtra="@dimen/_3pxh"
-                            android:paddingEnd="@dimen/_4pxh"
-                            android:singleLine="true"
-                            android:text="@{signUpVM.signUpModel.txtLabeltextTwo}"
-                            style="@style/txtSolid" tools:text="@string/lbl_repeat_password"/>
-                        <TextView android:ellipsize="end"
-                            android:id="@+id/txtPlaceholdertexOne"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_9pxv"
-                            android:layout_marginEnd="@dimen/_10pxh"
-                            android:layout_marginTop="@dimen/_11pxv"
-                            android:layout_width="match_parent"
-                            android:lineSpacingExtra="@dimen/_3pxh"
-                            android:singleLine="true"
-                            android:text="@{signUpVM.signUpModel.txtPlaceholdertexOne}"
-                            style="@style/txtRobotoregular16" tools:text="@string/msg_enter_your_pass2"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout android:gravity="center_horizontal"
-                android:id="@+id/linearColumnThree"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_58pxh"
-                android:layout_marginStart="@dimen/_58pxh"
-                android:layout_marginTop="@dimen/_33pxv"
-                android:layout_width="match_parent"
-                android:orientation="vertical" style="@style/groupStylecornerRadius">
-                <LinearLayout android:gravity="center_horizontal"
-                    android:id="@+id/linearColumnlabeltextThree"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical" style="@style/groupStylecornerRadius_1">
-                    <LinearLayout android:gravity="start"
-                        android:id="@+id/linearStatelayer3"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/_8pxv"
-                        android:layout_marginStart="@dimen/_10pxh"
-                        android:layout_marginTop="@dimen/_8pxv"
-                        android:layout_width="match_parent"
-                        android:orientation="vertical" style="@style/groupStylecornerRadius">
-                        <TextView android:ellipsize="end"
-                            android:id="@+id/txtLabeltextThree"
-                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5pxh"
                             android:layout_marginEnd="@dimen/_10pxh"
                             android:layout_width="wrap_content"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:paddingBottom="@dimen/_1pxv"
-                            android:paddingEnd="@dimen/_4pxh"
                             android:singleLine="true"
-                            android:text="@{signUpVM.signUpModel.txtLabeltextThree}"
-                            style="@style/txtSolid" tools:text="@string/lbl_email"/>
-                        <TextView android:ellipsize="end"
-                            android:id="@+id/txtPlaceholdertexTwo"
+                            android:text="@{signUpVM.signUpModel.txtLabeltextOne}"
+                            style="@style/txtSolid" tools:text="@string/lbl_repeat_password"/>
+                        <EditText android:ellipsize="end"
+                            android:id="@+id/editControlPassword"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/_9pxv"
                             android:layout_marginEnd="@dimen/_10pxh"
                             android:layout_marginTop="@dimen/_11pxv"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
-                            android:text="@{signUpVM.signUpModel.txtPlaceholdertexTwo}"
-                            style="@style/txtRobotoregular16" tools:text="@string/msg_enter_your_emai"/>
+                            android:hint="@{signUpVM.signUpModel.txtPlaceholdertex}"
+                            style="@style/txtRobotoregular16" tools:hint="@string/msg_enter_your_pass2"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal"
+                android:id="@+id/linearColumnEmail"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_58pxh"
+                android:layout_marginStart="@dimen/_58pxh"
+                android:layout_marginTop="@dimen/_12pxv"
+                android:layout_width="match_parent"
+                android:orientation="vertical" style="@style/groupStylecornerRadius">
+                <LinearLayout android:gravity="center_horizontal"
+                    android:id="@+id/linearColumnsearchEmail"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical" style="@style/groupStylecornerRadius_1">
+                    <LinearLayout android:gravity="start"
+                        android:id="@+id/linearStatelayerEmail"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical" style="@style/groupStylecornerRadius">
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtLabeltextEmail"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5pxh"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_width="wrap_content"
+                            android:lineSpacingExtra="@dimen/_3pxh"
+                            android:paddingBottom="@dimen/_1pxv"
+                            android:singleLine="true"
+                            android:text="@{signUpVM.signUpModel.txtLabeltextOne}"
+                            style="@style/txtSolid" tools:text="@string/lbl_email"/>
+                        <EditText android:ellipsize="end"
+                            android:id="@+id/editEmail"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_9pxv"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_marginTop="@dimen/_11pxv"
+                            android:layout_width="match_parent"
+                            android:lineSpacingExtra="@dimen/_3pxh"
+                            android:singleLine="true"
+                            android:hint="@{signUpVM.signUpModel.txtPlaceholdertex}"
+                            style="@style/txtRobotoregular16" tools:hint="@string/msg_enter_your_emai"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -263,7 +227,7 @@
                 android:ellipsize="end" android:gravity="center"
                 android:id="@+id/btnSingUp"
                 android:layout_gravity="center_horizontal"
-                android:layout_height="@dimen/_40pxv"
+                android:layout_height="@dimen/_45pxv"
                 android:layout_marginEnd="@dimen/_58pxh"
                 android:layout_marginStart="@dimen/_58pxh"
                 android:layout_marginTop="@dimen/_33pxv"
@@ -278,7 +242,7 @@
                 android:textAllCaps="false"
                 style="@style/btnSolidRounded" tools:text="@string/lbl_sing_up"/>
             <TextView android:ellipsize="end"
-                android:id="@+id/txtConfirmation"
+                android:id="@+id/haveAcc"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_58pxh"
@@ -293,7 +257,7 @@
                 android:ellipsize="end" android:gravity="center"
                 android:id="@+id/btnLogin"
                 android:layout_gravity="center_horizontal"
-                android:layout_height="@dimen/_40pxv"
+                android:layout_height="@dimen/_45pxv"
                 android:layout_marginEnd="@dimen/_58pxh"
                 android:layout_marginStart="@dimen/_58pxh"
                 android:layout_marginTop="@dimen/_16pxv"

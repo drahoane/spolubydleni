@@ -17,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId "com.anetsapplication.app"
-        minSdkVersion 23
+        minSdkVersion 30
         targetSdkVersion 33
         versionCode 1
         versionName "1.0"
