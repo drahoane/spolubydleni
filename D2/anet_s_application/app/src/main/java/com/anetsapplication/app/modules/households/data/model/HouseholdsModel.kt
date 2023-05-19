@@ -6,8 +6,8 @@ import kotlin.String
 
 data class HouseholdsModel(
 
-  var household_name: String?,
-  var household_date: String?,
+  var household_name: String? = "",
+  var household_date: String? = "",
   /**
    * TODO Replace with dynamic value
    */

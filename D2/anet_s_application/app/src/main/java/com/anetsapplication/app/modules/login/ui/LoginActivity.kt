@@ -52,6 +52,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
         if(checkUser) {
           Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
           val destIntent = HouseholdsActivity.getIntent(this, null)
+          destIntent.putExtra("username", usernameText)
           startActivity(destIntent)
         } else {
           Toast.makeText(this, "Password & username don't match", Toast.LENGTH_SHORT).show()

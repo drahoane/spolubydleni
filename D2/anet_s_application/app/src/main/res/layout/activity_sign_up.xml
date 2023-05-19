@@ -12,7 +12,7 @@
             android:id="@+id/linearDeviceDevicef"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:orientation="vertical" style="@style/groupStylewhite_A700cornerRadius">
+            android:orientation="vertical">
             <LinearLayout android:id="@+id/linearTopappbar"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -128,6 +128,7 @@
                             android:layout_width="match_parent"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
+                            android:inputType="textPassword"
                             android:hint="@{signUpVM.signUpModel.txtPlaceholdertex}"
                             style="@style/txtRobotoregular16" tools:hint="@string/msg_enter_your_pass"/>
                     </LinearLayout>
@@ -173,6 +174,7 @@
                             android:layout_width="match_parent"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
+                            android:inputType="textPassword"
                             android:hint="@{signUpVM.signUpModel.txtPlaceholdertex}"
                             style="@style/txtRobotoregular16" tools:hint="@string/msg_enter_your_pass2"/>
                     </LinearLayout>

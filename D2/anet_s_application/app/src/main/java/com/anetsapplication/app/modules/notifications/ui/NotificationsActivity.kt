@@ -8,6 +8,8 @@ import androidx.activity.viewModels
 import com.anetsapplication.app.R
 import com.anetsapplication.app.appcomponents.base.BaseActivity
 import com.anetsapplication.app.databinding.ActivityNotificationsBinding
+import com.anetsapplication.app.modules.create.ui.CreateActivity
+import com.anetsapplication.app.modules.households.ui.HouseholdsActivity
 import com.anetsapplication.app.modules.notifications.`data`.model.NotificationsRowModel
 import com.anetsapplication.app.modules.notifications.`data`.viewmodel.NotificationsVM
 import kotlin.Int
@@ -37,6 +39,16 @@ class NotificationsActivity :
   }
 
   override fun setUpClicks(): Unit {
+    binding.linearSegment1.setOnClickListener {
+      val destIntent = CreateActivity.getIntent(this, null)
+      destIntent.putExtra("username", intent.getStringExtra("username"))
+      startActivity(destIntent)
+    }
+    binding.linearSegment2.setOnClickListener {
+      val destIntent = HouseholdsActivity.getIntent(this, null)
+      destIntent.putExtra("username", intent.getStringExtra("username"))
+      startActivity(destIntent)
+    }
   }
 
   fun onClickRecyclerNotifications(

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <LinearLayout android:id="@+id/linearListitemList3"
+    <LinearLayout android:id="@+id/householdBtn"
         android:layout_gravity="top|start"
         android:layout_height="@dimen/_70pxh"
         android:layout_width="match_parent"
@@ -47,7 +46,7 @@
                 android:text="@{householdsVM.householdsModel.txtSupportingtextFour}"
                 style="@style/txtRobotoregular14" tools:text="@string/msg_last_update_2"/>
         </LinearLayout>
-        <ImageView android:id="@+id/householdBtn"
+        <ImageView android:id="@+id/arrowBtn"
             android:layout_height="@dimen/_12pxh"
             android:layout_marginBottom="@dimen/_40pxv"
             android:layout_marginEnd="@dimen/_30pxh"

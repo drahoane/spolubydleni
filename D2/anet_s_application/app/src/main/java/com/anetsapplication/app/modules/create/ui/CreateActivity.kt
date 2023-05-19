@@ -14,9 +14,12 @@ import com.anetsapplication.app.databinding.ActivityCreateBinding
 import com.anetsapplication.app.db.HouseholdDBHelper
 import com.anetsapplication.app.db.UserdataDBHelper
 import com.anetsapplication.app.modules.create.`data`.viewmodel.CreateVM
+import com.anetsapplication.app.modules.households.data.model.HouseholdsModel
 import com.anetsapplication.app.modules.households.ui.HouseholdsActivity
 import com.anetsapplication.app.modules.invite.ui.InviteActivity
 import com.anetsapplication.app.modules.notifications.ui.NotificationsActivity
+import java.time.LocalDate
+import java.time.LocalDateTime
 import kotlin.String
 import kotlin.Unit
 
@@ -36,13 +39,16 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
 
     createBtn.setOnClickListener {
       val householdText = household_name.text.toString();
+      val date = LocalDateTime.now().toString()
 
       if(TextUtils.isEmpty(householdText)) {
         Toast.makeText(this, "Fill out Household name.", Toast.LENGTH_SHORT).show()
       } else {
-        db.insertData(householdText)
+        val std = HouseholdsModel(household_name = householdText, household_date = date)
+        db.insertData(std, intent.getStringExtra("username"))
         Toast.makeText(this, "Household successfully created.", Toast.LENGTH_SHORT).show()
         val destIntent = HouseholdsActivity.getIntent(this, null)
+        destIntent.putExtra("username", intent.getStringExtra("username"))
         startActivity(destIntent)
       }
     }
@@ -51,10 +57,12 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
   override fun setUpClicks(): Unit {
     binding.linearSegment3.setOnClickListener {
       val destIntent = NotificationsActivity.getIntent(this, null)
+      destIntent.putExtra("username", intent.getStringExtra("username"))
       startActivity(destIntent)
     }
-    binding.btnCreate.setOnClickListener {
-      val destIntent = InviteActivity.getIntent(this, null)
+    binding.linearSegment2.setOnClickListener {
+      val destIntent = HouseholdsActivity.getIntent(this, null)
+      destIntent.putExtra("username", intent.getStringExtra("username"))
       startActivity(destIntent)
     }
   }

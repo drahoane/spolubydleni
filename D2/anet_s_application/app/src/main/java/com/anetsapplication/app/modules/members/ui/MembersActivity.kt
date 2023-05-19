@@ -3,13 +3,17 @@ package com.anetsapplication.app.modules.members.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.activity.viewModels
 import com.anetsapplication.app.R
 import com.anetsapplication.app.appcomponents.base.BaseActivity
 import com.anetsapplication.app.databinding.ActivityMembersBinding
 import com.anetsapplication.app.modules.addexpenseequally.ui.AddExpenseEquallyActivity
+import com.anetsapplication.app.modules.create.ui.CreateActivity
 import com.anetsapplication.app.modules.expenses.ui.ExpensesActivity
+import com.anetsapplication.app.modules.households.ui.HouseholdsActivity
 import com.anetsapplication.app.modules.invite.ui.InviteActivity
 import com.anetsapplication.app.modules.members.`data`.model.MembersRowModel
 import com.anetsapplication.app.modules.members.`data`.viewmodel.MembersVM
@@ -26,6 +30,10 @@ class MembersActivity : BaseActivity<ActivityMembersBinding>(R.layout.activity_m
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     val membersAdapter = MembersAdapter(viewModel.membersList.value?:mutableListOf())
     binding.recyclerMembers.adapter = membersAdapter
+
+    val headline: TextView = findViewById(R.id.txtHeadline)
+    headline.text = intent.getStringExtra("household_name")
+
     membersAdapter.setOnItemClickListener(
     object : MembersAdapter.OnItemClickListener {
       override fun onItemClick(view:View, position:Int, item : MembersRowModel) {
@@ -40,24 +48,42 @@ class MembersActivity : BaseActivity<ActivityMembersBinding>(R.layout.activity_m
   }
 
   override fun setUpClicks(): Unit {
-    binding.btnExpenses.setOnClickListener {
-      val destIntent = ExpensesActivity.getIntent(this, null)
-      startActivity(destIntent)
-    }
-    binding.linearSegment3.setOnClickListener {
-      val destIntent = NotificationsActivity.getIntent(this, null)
-      startActivity(destIntent)
-    }
     binding.btnOverview.setOnClickListener {
       val destIntent = OverviewActivity.getIntent(this, null)
+      destIntent.putExtra("username", intent.getStringExtra("username"))
+      destIntent.putExtra("household_name", intent.getStringExtra("household_name"))
+      startActivity(destIntent)
+    }
+    binding.btnExpenses.setOnClickListener {
+      val destIntent = ExpensesActivity.getIntent(this, null)
+      destIntent.putExtra("username", intent.getStringExtra("username"))
+      destIntent.putExtra("household_name", intent.getStringExtra("household_name"))
       startActivity(destIntent)
     }
     binding.btnGrid.setOnClickListener {
       val destIntent = AddExpenseEquallyActivity.getIntent(this, null)
+      Log.e("Go to add expense equally as user:", intent.getStringExtra("username").toString())
+      Log.e("Go to add expense equally as household_name:", intent.getStringExtra("household_name").toString())
+      destIntent.putExtra("username", intent.getStringExtra("username"))
+      destIntent.putExtra("household_name", intent.getStringExtra("household_name"))
       startActivity(destIntent)
     }
-    binding.etButton.setOnClickListener {
-      val destIntent = InviteActivity.getIntent(this, null)
+    binding.linearSegment1.setOnClickListener {
+      val destIntent = CreateActivity.getIntent(this, null)
+      destIntent.putExtra("username", intent.getStringExtra("username"))
+      destIntent.putExtra("household_name", intent.getStringExtra("household_name"))
+      startActivity(destIntent)
+    }
+    binding.linearSegment2.setOnClickListener {
+      val destIntent = HouseholdsActivity.getIntent(this, null)
+      destIntent.putExtra("username", intent.getStringExtra("username"))
+      destIntent.putExtra("household_name", intent.getStringExtra("household_name"))
+      startActivity(destIntent)
+    }
+    binding.linearSegment3.setOnClickListener {
+      val destIntent = NotificationsActivity.getIntent(this, null)
+      destIntent.putExtra("username", intent.getStringExtra("username"))
+      destIntent.putExtra("household_name", intent.getStringExtra("household_name"))
       startActivity(destIntent)
     }
   }
