@@ -47,7 +47,7 @@
                         android:layout_width="0dp"
                         android:lineSpacingExtra="@dimen/_4pxh"
                         android:singleLine="true"
-                        android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtHeadline}"
+                        android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.household_name}"
                         style="@style/txtRobotoregular22" tools:text="@string/lbl_my_sweet_home"/>
                     <LinearLayout android:gravity="center_horizontal"
                         android:id="@+id/linearContainer"
@@ -91,7 +91,6 @@
                             android:layout_width="wrap_content"
                             android:lineSpacingExtra="@dimen/_4pxh"
                             android:singleLine="true"
-                            android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtSplit}"
                             style="@style/txtRobotoregular22_1" tools:text="@string/lbl_split"/>
                         <LinearLayout
                             android:gravity="center_horizontal"
@@ -121,7 +120,6 @@
                                     android:layout_width="wrap_content"
                                     android:lineSpacingExtra="@dimen/_3pxh"
                                     android:singleLine="true"
-                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtLabel}"
                                     style="@style/txtRobotomedium14_4" tools:text="@string/lbl_equally"/>
                                     <View
                                     android:background="@color/deep_purple_500"
@@ -168,189 +166,11 @@
                                 android:layout_gravity="start"
                                 android:layout_height="@dimen/_1pxv"
                                 android:layout_marginTop="@dimen/_1pxv" android:layout_width="@dimen/_360pxh"/>
-                            <LinearLayout
-                                android:id="@+id/linearPerson1"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="@dimen/_32pxh"
-                                android:layout_marginStart="@dimen/_41pxh"
-                                android:layout_marginTop="@dimen/_14pxv"
-                                android:layout_width="match_parent" android:orientation="horizontal">
-                                <LinearLayout
-                                    android:id="@+id/linearRowavatars3dav"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0.88"
-                                    android:layout_width="0dp" android:orientation="horizontal">
-                                    <ImageView
-                                    android:id="@+id/imageAvatars3dav"
-                                    android:layout_height="@dimen/_40pxh"
-                                    android:layout_width="@dimen/_40pxh"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/img_avatars3dav_88x88"
-                                    tools:ignore="ContentDescription" tools:src="@drawable/img_avatars3dav_88x88"/>
-                                    <TextView android:ellipsize="end"
-                                    android:id="@+id/txtCristineOlive"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/_11pxv"
-                                    android:layout_marginStart="@dimen/_10pxh"
-                                    android:layout_marginTop="@dimen/_11pxv"
-                                    android:layout_weight="0.68"
-                                    android:layout_width="0dp"
-                                    android:lineSpacingExtra="@dimen/_3pxh"
-                                    android:singleLine="true"
-                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtCristineOlive}"
-                                    style="@style/txtRobotomedium14_3" tools:text="@string/lbl_cristine_olive"/>
-                                </LinearLayout>
-                                <ImageButton
-                                    android:background="@drawable/rectangle_bg_deep_purple_500_radius_9"
-                                    android:id="@+id/btnCheckmark"
-                                    android:layout_height="@dimen/_18pxh"
-                                    android:layout_marginBottom="@dimen/_11pxv"
-                                    android:layout_marginEnd="@dimen/_11pxh"
-                                    android:layout_marginStart="@dimen/_122pxh"
-                                    android:layout_marginTop="@dimen/_11pxv"
-                                    android:layout_width="@dimen/_18pxh"
-                                    android:paddingHorizontal="@dimen/_3pxh"
-                                    android:paddingVertical="@dimen/_3pxv"
-                                    android:scaleType="fitCenter"
-                                    android:src="@drawable/img_checkmark" tools:ignore="ContentDescription"/>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/linearPerson2"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="@dimen/_32pxh"
-                                android:layout_marginStart="@dimen/_41pxh"
-                                android:layout_marginTop="@dimen/_10pxv"
-                                android:layout_width="match_parent" android:orientation="horizontal">
-                                <LinearLayout
-                                    android:id="@+id/linearRowavatars3davOne"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0.89"
-                                    android:layout_width="0dp" android:orientation="horizontal">
-                                    <ImageView
-                                    android:id="@+id/imageAvatars3davOne"
-                                    android:layout_height="@dimen/_40pxh"
-                                    android:layout_width="@dimen/_40pxh"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/img_avatars3dav_1"
-                                    tools:ignore="ContentDescription" tools:src="@drawable/img_avatars3dav_1"/>
-                                    <TextView android:ellipsize="end"
-                                    android:id="@+id/txtJenifferCloud"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/_11pxv"
-                                    android:layout_marginStart="@dimen/_10pxh"
-                                    android:layout_marginTop="@dimen/_11pxv"
-                                    android:layout_weight="0.69"
-                                    android:layout_width="0dp"
-                                    android:lineSpacingExtra="@dimen/_3pxh"
-                                    android:singleLine="true"
-                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtJenifferCloud}"
-                                    style="@style/txtRobotomedium14_3" tools:text="@string/lbl_jeniffer_cloud"/>
-                                </LinearLayout>
-                                <ImageView
-                                    android:id="@+id/imageStatelayer"
-                                    android:layout_height="@dimen/_18pxh"
-                                    android:layout_marginBottom="@dimen/_11pxv"
-                                    android:layout_marginEnd="@dimen/_11pxh"
-                                    android:layout_marginStart="@dimen/_117pxh"
-                                    android:layout_marginTop="@dimen/_11pxv"
-                                    android:layout_width="@dimen/_18pxh"
-                                    android:scaleType="centerCrop"
-                                    circular="@{true}"
-                                    imageRes="@{@drawable/img_statelayer}"
-                                    tools:ignore="ContentDescription" tools:src="@drawable/img_statelayer"/>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/linearPerson3"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="@dimen/_32pxh"
-                                android:layout_marginStart="@dimen/_41pxh"
-                                android:layout_marginTop="@dimen/_10pxv"
-                                android:layout_width="match_parent" android:orientation="horizontal">
-                                <LinearLayout
-                                    android:id="@+id/linearRowavatars3davTwo"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0.88"
-                                    android:layout_width="0dp" android:orientation="horizontal">
-                                    <ImageView
-                                    android:id="@+id/imageAvatars3davTwo"
-                                    android:layout_height="@dimen/_40pxh"
-                                    android:layout_width="@dimen/_40pxh"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/img_avatars3dav_2"
-                                    tools:ignore="ContentDescription" tools:src="@drawable/img_avatars3dav_2"/>
-                                    <TextView android:ellipsize="end"
-                                    android:id="@+id/txtHonzaNov"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/_10pxv"
-                                    android:layout_marginStart="@dimen/_10pxh"
-                                    android:layout_marginTop="@dimen/_12pxv"
-                                    android:layout_weight="0.66"
-                                    android:layout_width="0dp"
-                                    android:lineSpacingExtra="@dimen/_3pxh"
-                                    android:singleLine="true"
-                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtHonzaNov}"
-                                    style="@style/txtRobotomedium14_3" tools:text="@string/lbl_honza_nov"/>
-                                </LinearLayout>
-                                <ImageButton
-                                    android:background="@drawable/rectangle_bg_deep_purple_500_radius_9"
-                                    android:id="@+id/btnCheckmarkOne"
-                                    android:layout_height="@dimen/_18pxh"
-                                    android:layout_marginBottom="@dimen/_11pxv"
-                                    android:layout_marginEnd="@dimen/_11pxh"
-                                    android:layout_marginStart="@dimen/_130pxh"
-                                    android:layout_marginTop="@dimen/_11pxv"
-                                    android:layout_width="@dimen/_18pxh"
-                                    android:paddingHorizontal="@dimen/_3pxh"
-                                    android:paddingVertical="@dimen/_3pxv"
-                                    android:scaleType="fitCenter"
-                                    android:src="@drawable/img_checkmark" tools:ignore="ContentDescription"/>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/linearPerson4"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/_21pxv"
-                                android:layout_marginEnd="@dimen/_32pxh"
-                                android:layout_marginStart="@dimen/_41pxh"
-                                android:layout_marginTop="@dimen/_10pxv"
-                                android:layout_width="match_parent" android:orientation="horizontal">
-                                <LinearLayout
-                                    android:id="@+id/linearRowavatars3davThree"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0.9"
-                                    android:layout_width="0dp" android:orientation="horizontal">
-                                    <ImageView
-                                    android:id="@+id/imageAvatars3davThree"
-                                    android:layout_height="@dimen/_40pxh"
-                                    android:layout_width="@dimen/_40pxh"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/img_avatars3dav_3"
-                                    tools:ignore="ContentDescription" tools:src="@drawable/img_avatars3dav_3"/>
-                                    <TextView android:ellipsize="end"
-                                    android:id="@+id/txtFrantiekPolv"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/_11pxv"
-                                    android:layout_marginStart="@dimen/_12pxh"
-                                    android:layout_marginTop="@dimen/_11pxv"
-                                    android:layout_weight="0.73"
-                                    android:layout_width="0dp"
-                                    android:lineSpacingExtra="@dimen/_3pxh"
-                                    android:singleLine="true"
-                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtFrantiekPolv}"
-                                    style="@style/txtRobotomedium14_3" tools:text="@string/msg_franti_ek_pol_v3"/>
-                                </LinearLayout>
-                                <ImageView
-                                    android:id="@+id/imageStatelayerOne"
-                                    android:layout_height="@dimen/_18pxh"
-                                    android:layout_marginBottom="@dimen/_11pxv"
-                                    android:layout_marginEnd="@dimen/_11pxh"
-                                    android:layout_marginStart="@dimen/_98pxh"
-                                    android:layout_marginTop="@dimen/_11pxv"
-                                    android:layout_width="@dimen/_18pxh"
-                                    android:scaleType="centerCrop"
-                                    circular="@{true}"
-                                    imageRes="@{@drawable/img_statelayer}"
-                                    tools:ignore="ContentDescription" tools:src="@drawable/img_statelayer"/>
-                            </LinearLayout>
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerMembers"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
                         </LinearLayout>
                         <androidx.appcompat.widget.AppCompatButton
                             android:ellipsize="end"
@@ -401,7 +221,6 @@
                                 android:layout_weight="0.63"
                                 android:layout_width="0dp"
                                 android:lineSpacingExtra="@dimen/_4pxh"
-                                android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtChooseiconor}"
                                 style="@style/txtRobotoregular12" tools:text="@string/msg_choose_icon_or"/>
                         </LinearLayout>
                         <LinearLayout
@@ -435,7 +254,6 @@
                                     android:paddingBottom="@dimen/_1pxv"
                                     android:paddingEnd="@dimen/_4pxh"
                                     android:singleLine="true"
-                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtLabeltext}"
                                     style="@style/txtSolid_1" tools:text="@string/lbl_name"/>
                                     <EditText android:ellipsize="end"
                                     android:id="@+id/enterExpenseName"
@@ -446,7 +264,6 @@
                                     android:layout_width="match_parent"
                                     android:lineSpacingExtra="@dimen/_3pxh"
                                     android:singleLine="true"
-                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtPlaceholdertex}"
                                     style="@style/txtRobotoregular16" tools:text="@string/msg_enter_expense_n"/>
                                 </LinearLayout>
                             </LinearLayout>
@@ -489,7 +306,6 @@
                                     android:paddingBottom="@dimen/_1pxv"
                                     android:paddingEnd="@dimen/_4pxh"
                                     android:singleLine="true"
-                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtTimeZone}"
                                     style="@style/txtSolid_1" tools:text="@string/lbl_cost"/>
                                     <EditText
                                     android:ellipsize="end"
@@ -501,7 +317,6 @@
                                     android:layout_width="match_parent"
                                     android:lineSpacingExtra="@dimen/_3pxh"
                                     android:singleLine="true"
-                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtPlaceholdertexOne}"
                                     style="@style/txtRobotoregular16" tools:text="@string/msg_enter_the_cost"/>
                                     </LinearLayout>
                                 </LinearLayout>
@@ -539,7 +354,6 @@
                                     android:lineSpacingExtra="@dimen/_3pxh"
                                     android:paddingEnd="@dimen/_4pxh"
                                     android:singleLine="true"
-                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtLabeltextOne}"
                                     style="@style/txtSolid_1" tools:text="@string/lbl_currency"/>
                                     <LinearLayout
                                     android:gravity="start"
@@ -557,7 +371,6 @@
                                     android:layout_width="0dp"
                                     android:lineSpacingExtra="@dimen/_3pxh"
                                     android:singleLine="true"
-                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtPrice}"
                                     style="@style/txtRobotoregular16_2" tools:text="@string/lbl_czk"/>
                                     <LinearLayout
                                     android:gravity="center_horizontal"
@@ -623,7 +436,7 @@
                                     android:lineSpacingExtra="@dimen/_3pxh"
                                     android:paddingEnd="@dimen/_4pxh"
                                     android:singleLine="true"
-                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtLabeltextTwo}"
+                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.paidBy}"
                                     style="@style/txtSolid_1" tools:text="@string/lbl_paid_by"/>
                                     <EditText
                                     android:ellipsize="end"
@@ -634,7 +447,6 @@
                                     android:layout_width="wrap_content"
                                     android:lineSpacingExtra="@dimen/_3pxh"
                                     android:singleLine="true"
-                                    android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtInputtext}"
                                     style="@style/txtRobotoregular16_2" tools:text="@string/lbl_honza_nov"/>
                                     </LinearLayout>
                                     <LinearLayout
@@ -703,7 +515,6 @@
                             android:layout_width="wrap_content"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
-                            android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtLabeltextThree}"
                             style="@style/txtRobotomedium12" tools:text="@string/lbl_create"/>
                     </LinearLayout>
                     <LinearLayout android:gravity="center_horizontal"
@@ -740,7 +551,6 @@
                             android:layout_width="match_parent"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
-                            android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtLabeltextFour}"
                             style="@style/txtRobotomedium12" tools:text="@string/lbl_households"/>
                     </LinearLayout>
                     <LinearLayout android:gravity="center_horizontal"
@@ -781,7 +591,6 @@
                                 android:paddingStart="@dimen/_4pxh"
                                 android:paddingTop="@dimen/_1pxv"
                                 android:singleLine="true"
-                                android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtBadge}"
                                 style="@style/txtSolidRounded" tools:text="@string/lbl_4"/>
                         </FrameLayout>
                         <TextView android:ellipsize="end"
@@ -792,7 +601,6 @@
                             android:layout_width="match_parent"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
-                            android:text="@{addExpenseEquallyVM.addExpenseEquallyModel.txtLabeltextFive}"
                             style="@style/txtRobotomedium12" tools:text="@string/lbl_notifications"/>
                     </LinearLayout>
                 </LinearLayout>

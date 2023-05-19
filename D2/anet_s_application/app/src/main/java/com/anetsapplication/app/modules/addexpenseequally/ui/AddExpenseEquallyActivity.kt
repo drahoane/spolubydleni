@@ -4,10 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.anetsapplication.app.R
 import com.anetsapplication.app.appcomponents.base.BaseActivity
 import com.anetsapplication.app.databinding.ActivityAddExpenseEquallyBinding
@@ -17,6 +20,7 @@ import com.anetsapplication.app.modules.addexpenseequally.`data`.viewmodel.AddEx
 import com.anetsapplication.app.modules.addexpenseequallyerror.ui.AddExpenseEquallyErrorActivity
 import com.anetsapplication.app.modules.addexpenseunequally.ui.AddExpenseUnequallyActivity
 import com.anetsapplication.app.modules.expenses.ui.ExpensesActivity
+import com.anetsapplication.app.modules.households.data.adapter.HouseholdsAdapter
 import com.anetsapplication.app.modules.notifications.ui.NotificationsActivity
 import java.time.LocalDateTime
 import java.util.*
@@ -26,6 +30,8 @@ import kotlin.Unit
 class AddExpenseEquallyActivity :
     BaseActivity<ActivityAddExpenseEquallyBinding>(R.layout.activity_add_expense_equally) {
   private val viewModel: AddExpenseEquallyVM by viewModels<AddExpenseEquallyVM>()
+  private lateinit var recyclerView: RecyclerView
+  private var adapter: HouseholdsAdapter? = null
   private lateinit var expense_name: EditText
   private lateinit var expense_cost: EditText
   private lateinit var currency: EditText
@@ -97,4 +103,18 @@ class AddExpenseEquallyActivity :
       return destIntent
     }
   }
+  fun initRecyclerView() {
+    recyclerView.layoutManager = LinearLayoutManager(this)
+    adapter = HouseholdsAdapter()
+    recyclerView.adapter = adapter
+  }
+
+  fun getHouseholds() {
+    val username = intent.getStringExtra("username")
+    val stdList = db.getDataByUser(username)
+    Log.e("Households length", "${stdList.size}")
+    adapter?.addItems(stdList)
+  }
+}
+
 }

@@ -1,9 +1,13 @@
 package com.anetsapplication.app.db
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.anetsapplication.app.modules.addexpenseequally.data.model.AddExpenseEquallyModel
+import com.anetsapplication.app.modules.households.data.model.HouseholdsModel
 import java.util.*
 
 /** Tu by mala byť DB implementácia pre Expenses, moja pre overview, tvoja pre add, edit, delete
@@ -76,4 +80,36 @@ import java.util.*
             }
             return true;
         }
+
+    @SuppressLint("Range")
+    fun getDataByUser(username: String?): ArrayList<AddExpenseEquallyModel> {
+        val stdList: ArrayList<AddExpenseEquallyModel> = ArrayList();
+        val query = "select * from Expense where username = '$username'";
+        val myDB = this.readableDatabase;
+        val cursor: Cursor?
+
+        try {
+            cursor = myDB.rawQuery(query, null)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return ArrayList()
+        }
+
+        var household_name: String
+        var household_date: String
+
+        if(cursor.moveToFirst()) {
+            do {
+                household_name = cursor.getString(0)
+                household_date = cursor.getString(1)
+
+                val std = HouseholdsModel(
+                    household_name = household_name,
+                    household_date = household_date
+                )
+                stdList.add(std)
+            } while (cursor.moveToNext())
+        }
+        return stdList
+    }
     }
