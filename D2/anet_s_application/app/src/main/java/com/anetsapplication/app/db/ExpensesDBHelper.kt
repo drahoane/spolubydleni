@@ -1,7 +1,12 @@
 package com.anetsapplication.app.db
 
-class ExpensesDBHelper {
-    /** Tu by mala byť DB implementácia pre Expenses, moja pre overview, tvoja pre add, edit, delete
+import android.content.ContentValues
+import android.content.Context
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+import java.util.*
+
+/** Tu by mala byť DB implementácia pre Expenses, moja pre overview, tvoja pre add, edit, delete
      * UserdataDB je o dosť viac easy ako HouseholdDB, takže skôr vychádzaj z toho ľahšieho :)
      * V ňom je iba princíp add (add user), takže presne to čo potrebuješ, v druhom je aj render
      *
@@ -47,4 +52,28 @@ class ExpensesDBHelper {
      *  Odpadne ti teda IDčko číselné, ktoré by si musela nejak schovávať cez .xml a preposielať
      *  To teda neviem ako sa robí, preto to robím takto :D
      * */
-}
+
+    class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", null, 1) {
+        override fun onCreate(myDB: SQLiteDatabase?) {
+            myDB?.execSQL("create table Expenses (id INTEGER primary key, expense_name TEXT, " +
+                    "expense_cost TEXT, currency TEXT, paidBy TEXT)")
+        }
+
+        override fun onUpgrade(myDB: SQLiteDatabase?, p1: Int, p2: Int) {
+            myDB?.execSQL("drop table if exists Expenses")
+        }
+
+        fun insertData(expense_name: String, expense_cost: String, currency: String, paidBy: String): Boolean {
+            val myDB = this.writableDatabase;
+            val data = ContentValues();
+            data.put("expense_name", expense_name);
+            data.put("expense_cost", expense_cost);
+            data.put("currency", currency);
+            data.put("paidBy", paidBy);
+            val result = myDB.insert("Expenses", null, data);
+            if(result == (-1).toLong()) {
+                return false;
+            }
+            return true;
+        }
+    }

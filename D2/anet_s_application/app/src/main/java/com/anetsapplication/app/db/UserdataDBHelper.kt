@@ -21,7 +21,7 @@ class UserdataDBHelper(context: Context):SQLiteOpenHelper(context, "Userdata", n
         data.put("password", password);
         data.put("email", email);
         val result = myDB.insert("Userdata", null, data);
-        if(result == -1 .toLong()) {
+        if(result == (-1).toLong()) {
             return false;
         }
         return true;
