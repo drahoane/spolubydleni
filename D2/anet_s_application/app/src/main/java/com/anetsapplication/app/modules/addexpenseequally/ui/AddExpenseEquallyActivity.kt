@@ -15,18 +15,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.anetsapplication.app.R
 import com.anetsapplication.app.appcomponents.base.BaseActivity
 import com.anetsapplication.app.databinding.ActivityAddExpenseEquallyBinding
-import com.anetsapplication.app.db.ExpensesDBHelper
-import com.anetsapplication.app.db.HouseholdDBHelper
-import com.anetsapplication.app.db.UserdataDBHelper
+import com.anetsapplication.app.db.*
 import com.anetsapplication.app.modules.addexpensebyshares.ui.AddExpenseBySharesActivity
 import com.anetsapplication.app.modules.addexpenseequally.`data`.viewmodel.AddExpenseEquallyVM
 import com.anetsapplication.app.modules.addexpenseunequally.ui.AddExpenseUnequallyActivity
 import com.anetsapplication.app.modules.create.ui.CreateActivity
 import com.anetsapplication.app.modules.expenses.ui.ExpensesActivity
 import com.anetsapplication.app.modules.addexpenseequally.data.adapter.AddExpenseEquallyAdapter
+import com.anetsapplication.app.modules.addexpenseequally.data.model.AddExpenseEquallyModel
 import com.anetsapplication.app.modules.households.ui.HouseholdsActivity
 import com.anetsapplication.app.modules.notifications.ui.NotificationsActivity
-import java.time.LocalDateTime
 import kotlin.String
 import kotlin.Unit
 
@@ -40,9 +38,11 @@ class AddExpenseEquallyActivity :
   private lateinit var currency: EditText
   private lateinit var paidBy: EditText
   private lateinit var addBtn: Button
-  private lateinit var db: ExpensesDBHelper
+  private lateinit var expensesDBHelper: ExpensesDBHelper
   private lateinit var householdsHelper: HouseholdDBHelper
   private lateinit var userdataHelper: UserdataDBHelper
+  private lateinit var householdUserDBHelper: HouseholdUserDBHelper
+  private lateinit var debtDBHelper: DebtDBHelper
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
@@ -52,17 +52,20 @@ class AddExpenseEquallyActivity :
     expense_name = findViewById(R.id.enterExpenseName)
     expense_cost = findViewById(R.id.enterExpenseCost)
     currency = findViewById(R.id.enterCurrency)
-    db = ExpensesDBHelper(this)
+    expensesDBHelper = ExpensesDBHelper(this)
 
     householdsHelper = HouseholdDBHelper(this)
     userdataHelper = UserdataDBHelper(this)
 
     recyclerView = findViewById(R.id.recyclerMembers)
     initRecyclerView()
-    getMembers()
+
+    var householdId = intent.getStringExtra("household_id")?.toInt()
+
+    getMembers(householdId)
 
     val headline: TextView = findViewById(R.id.txtHeadline)
-    val stdList = householdsHelper.getDataByHouseholdID(intent.getStringExtra("household_id")?.toInt())
+    val stdList = householdsHelper.getDataByHouseholdID(householdId)
     headline.text = stdList[0].household_name
 
     addBtn.setOnClickListener {
@@ -75,7 +78,18 @@ class AddExpenseEquallyActivity :
         Toast.makeText(this, "Fill out all fields.", Toast.LENGTH_SHORT).show()
       } else {
         Toast.makeText(this, "Expense successfully created.", Toast.LENGTH_SHORT).show()
-        db.insertData(name, cost.toDouble(), currency, paidBy.toInt(), intent.getStringExtra("household_id")?.toInt());
+        var expenseId = expensesDBHelper.insertData(name, cost.toDouble(), currency, paidBy.toInt(), intent.getStringExtra("household_id")?.toInt())
+        var members = householdUserDBHelper.getAllMembers(householdId)
+
+        val adapter = recyclerView.adapter as AddExpenseEquallyAdapter
+        val checkedList = adapter.getChecked()
+
+        for (member in members) {
+          if (checkedList.contains(member.user_id)) {
+            debtDBHelper.insertData(expenseId.toInt(), member.user_id, cost.toDouble()/checkedList.count())
+          }
+        }
+
         val destIntent = ExpensesActivity.getIntent(this, null)
         destIntent.putExtra("username", intent.getStringExtra("username"))
         startActivity(destIntent)
@@ -138,8 +152,12 @@ class AddExpenseEquallyActivity :
     recyclerView.adapter = adapter
   }
 
-  fun getMembers() {
-    val stdList = userdataHelper.getAllUsers()
+  fun getMembers(household_id: Int?) {
+    if (household_id == null)
+      throw java.lang.Exception("Error... :]")
+
+    val stdList = householdUserDBHelper.getAllMembers(household_id)
+
     Log.e("Households length XXXXXX", "${stdList.size}")
     adapter?.addItems(stdList)
   }

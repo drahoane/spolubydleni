@@ -120,7 +120,6 @@
                             android:layout_width="wrap_content"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
-                            android:text="@{membersVM.membersModel.txtLabel}"
                             style="@style/txtRobotomedium14_1" tools:text="@string/lbl_members"/>
                         <View
                             android:background="@drawable/rectangle_bg_deep_purple_500_radius_tl_100_tr_100"
@@ -172,7 +171,6 @@
                     android:paddingTop="@dimen/_12pxv"
                     android:singleLine="true"
                     android:gravity="center"
-                    android:text="@={membersVM.membersModel.etButtonValue}"
                     android:textColorHint="@color/white_A700"
                     style="@style/etSolidRounded" tools:ignore="Autofill"/>
                 <ImageButton

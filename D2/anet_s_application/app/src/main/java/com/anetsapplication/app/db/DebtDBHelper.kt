@@ -7,18 +7,18 @@ import android.database.sqlite.SQLiteOpenHelper
 
 class DebtDBHelper(context: Context): SQLiteOpenHelper(context, "Debt", null, 1) {
     override fun onCreate(myDB: SQLiteDatabase?) {
-        myDB?.execSQL("create table Debt (expenseId TEXT primary key, username TEXT primary key, amount INTEGER)")
+        myDB?.execSQL("create table Debt (expense_id INTEGER primary key, user_id INTEGER primary key, amount REAL)")
     }
 
     override fun onUpgrade(myDB: SQLiteDatabase?, p1: Int, p2: Int) {
         myDB?.execSQL("drop table if exists Debt")
     }
 
-    fun insertData(expenseId: String, username: String, amount: Int): Boolean {
+    fun insertData(expenseId: Int, username: Int, amount: Double): Boolean {
         val myDB = this.writableDatabase;
         val data = ContentValues();
-        data.put("expenseId", expenseId);
-        data.put("username", username);
+        data.put("expense_id", expenseId);
+        data.put("user_id", username);
         data.put("amount", amount);
         val result = myDB.insert("Debt", null, data);
         if(result == (-1).toLong()) {

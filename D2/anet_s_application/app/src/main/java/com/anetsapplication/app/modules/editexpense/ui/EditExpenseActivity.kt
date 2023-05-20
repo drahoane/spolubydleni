@@ -1,6 +1,5 @@
 package com.anetsapplication.app.modules.editexpense.ui
 
-import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast

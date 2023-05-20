@@ -21,7 +21,7 @@ class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", n
         }
 
         // NAPR: expensesHelper.insertData("new shoes", 2.85, "CZK", 1, 1)
-        fun insertData(expense_name: String, expense_cost: Double, currency: String, paid_by_id: Int, household_id: Int?): Boolean {
+        fun insertData(expense_name: String, expense_cost: Double, currency: String, paid_by_id: Int, household_id: Int?): Long {
             val myDB = this.writableDatabase;
             val data = ContentValues();
             data.put("expense_name", expense_name);
@@ -31,9 +31,9 @@ class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", n
             data.put("household_id", household_id);
             val result = myDB.insert("Expenses", null, data);
             if(result == (-1).toLong()) {
-                return false;
+                return -1;
             }
-            return true;
+            return result;
         }
 
         fun deleteDataById(id: Int) {
