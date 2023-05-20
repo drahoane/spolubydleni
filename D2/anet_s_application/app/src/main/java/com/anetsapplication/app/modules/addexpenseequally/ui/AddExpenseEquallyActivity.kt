@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,15 +16,17 @@ import com.anetsapplication.app.R
 import com.anetsapplication.app.appcomponents.base.BaseActivity
 import com.anetsapplication.app.databinding.ActivityAddExpenseEquallyBinding
 import com.anetsapplication.app.db.ExpensesDBHelper
+import com.anetsapplication.app.db.HouseholdDBHelper
+import com.anetsapplication.app.db.UserdataDBHelper
 import com.anetsapplication.app.modules.addexpensebyshares.ui.AddExpenseBySharesActivity
 import com.anetsapplication.app.modules.addexpenseequally.`data`.viewmodel.AddExpenseEquallyVM
-import com.anetsapplication.app.modules.addexpenseequallyerror.ui.AddExpenseEquallyErrorActivity
 import com.anetsapplication.app.modules.addexpenseunequally.ui.AddExpenseUnequallyActivity
+import com.anetsapplication.app.modules.create.ui.CreateActivity
 import com.anetsapplication.app.modules.expenses.ui.ExpensesActivity
-import com.anetsapplication.app.modules.households.data.adapter.HouseholdsAdapter
+import com.anetsapplication.app.modules.addexpenseequally.data.adapter.AddExpenseEquallyAdapter
+import com.anetsapplication.app.modules.households.ui.HouseholdsActivity
 import com.anetsapplication.app.modules.notifications.ui.NotificationsActivity
 import java.time.LocalDateTime
-import java.util.*
 import kotlin.String
 import kotlin.Unit
 
@@ -31,13 +34,15 @@ class AddExpenseEquallyActivity :
     BaseActivity<ActivityAddExpenseEquallyBinding>(R.layout.activity_add_expense_equally) {
   private val viewModel: AddExpenseEquallyVM by viewModels<AddExpenseEquallyVM>()
   private lateinit var recyclerView: RecyclerView
-  private var adapter: HouseholdsAdapter? = null
+  private var adapter: AddExpenseEquallyAdapter? = null
   private lateinit var expense_name: EditText
   private lateinit var expense_cost: EditText
   private lateinit var currency: EditText
   private lateinit var paidBy: EditText
   private lateinit var addBtn: Button
   private lateinit var db: ExpensesDBHelper
+  private lateinit var householdsHelper: HouseholdDBHelper
+  private lateinit var userdataHelper: UserdataDBHelper
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
@@ -47,8 +52,18 @@ class AddExpenseEquallyActivity :
     expense_name = findViewById(R.id.enterExpenseName)
     expense_cost = findViewById(R.id.enterExpenseCost)
     currency = findViewById(R.id.enterCurrency)
-    paidBy = findViewById(R.id.enterPaidBy)
     db = ExpensesDBHelper(this)
+
+    householdsHelper = HouseholdDBHelper(this)
+    userdataHelper = UserdataDBHelper(this)
+
+    recyclerView = findViewById(R.id.recyclerMembers)
+    initRecyclerView()
+    getMembers()
+
+    val headline: TextView = findViewById(R.id.txtHeadline)
+    val stdList = householdsHelper.getDataByHouseholdID(intent.getStringExtra("household_id")?.toInt())
+    headline.text = stdList[0].household_name
 
     addBtn.setOnClickListener {
       val name = expense_name.text.toString()
@@ -61,7 +76,7 @@ class AddExpenseEquallyActivity :
       if (TextUtils.isEmpty(name) || TextUtils.isEmpty(cost) || TextUtils.isEmpty(currency) || TextUtils.isEmpty(paidBy)) {
         Toast.makeText(this, "Fill out all fields.", Toast.LENGTH_SHORT).show()
       } else {
-        db.insertData(name, cost, currency, paidBy)
+        //db.insertData(name, cost, currency, paidBy, "zly nazov")
         Toast.makeText(this, "Expense successfully created.", Toast.LENGTH_SHORT).show()
         val destIntent = ExpensesActivity.getIntent(this, null)
         destIntent.putExtra("username", intent.getStringExtra("username"))
@@ -72,24 +87,40 @@ class AddExpenseEquallyActivity :
 
 
   override fun setUpClicks(): Unit {
-    binding.btnAddExpense.setOnClickListener {
-      val destIntent = AddExpenseEquallyErrorActivity.getIntent(this, null)
-      startActivity(destIntent)
-    }
     binding.btnUnequally.setOnClickListener {
       val destIntent = AddExpenseUnequallyActivity.getIntent(this, null)
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+      destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
+      destIntent.putExtra("expense_id", intent.getStringExtra("expense_id"))
       startActivity(destIntent)
     }
     binding.btnByShares.setOnClickListener {
       val destIntent = AddExpenseBySharesActivity.getIntent(this, null)
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+      destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
+      destIntent.putExtra("expense_id", intent.getStringExtra("expense_id"))
+      startActivity(destIntent)
+    }
+    binding.linearSegment1.setOnClickListener {
+      val destIntent = CreateActivity.getIntent(this, null)
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+      startActivity(destIntent)
+    }
+    binding.linearSegment2.setOnClickListener {
+      val destIntent = HouseholdsActivity.getIntent(this, null)
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
       startActivity(destIntent)
     }
     binding.linearSegment3.setOnClickListener {
       val destIntent = NotificationsActivity.getIntent(this, null)
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
       startActivity(destIntent)
     }
     binding.imageArrowleft.setOnClickListener {
-      finish()
+      val destIntent = ExpensesActivity.getIntent(this, null)
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+      destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
+      startActivity(destIntent)
     }
   }
 
@@ -105,16 +136,13 @@ class AddExpenseEquallyActivity :
   }
   fun initRecyclerView() {
     recyclerView.layoutManager = LinearLayoutManager(this)
-    adapter = HouseholdsAdapter()
+    adapter = AddExpenseEquallyAdapter()
     recyclerView.adapter = adapter
   }
 
-  fun getHouseholds() {
-    val username = intent.getStringExtra("username")
-    val stdList = db.getDataByUser(username)
-    Log.e("Households length", "${stdList.size}")
+  fun getMembers() {
+    val stdList = userdataHelper.getAllUsers()
+    Log.e("Households length XXXXXX", "${stdList.size}")
     adapter?.addItems(stdList)
   }
-}
-
 }

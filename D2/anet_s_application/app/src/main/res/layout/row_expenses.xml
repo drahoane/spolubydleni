@@ -14,8 +14,9 @@
             android:layout_marginTop="@dimen/_8pxv"
             android:layout_width="@dimen/_56pxh"
             android:scaleType="fitXY"
-            imageRes="@{@drawable/img_thumbnail}"
-            tools:ignore="ContentDescription" tools:src="@drawable/img_thumbnail"/>
+            tools:ignore="ContentDescription"
+            imageRes="@{@drawable/img_rectangle1}"
+            android:src="@drawable/img_rectangle1"/>
         <LinearLayout android:gravity="start"
             android:id="@+id/linearContent"
             android:layout_height="wrap_content"
@@ -23,9 +24,9 @@
             android:layout_marginEnd="@dimen/_142pxh"
             android:layout_marginStart="@dimen/_16pxh"
             android:layout_marginTop="@dimen/_15pxv"
-            android:layout_weight="0.74" android:layout_width="0dp" android:orientation="vertical">
+            android:layout_weight="0.94" android:layout_width="0dp" android:orientation="vertical">
             <TextView android:ellipsize="end"
-                android:id="@+id/txtHeadlineFour"
+                android:id="@+id/expense_name"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_10pxh"
                 android:layout_width="wrap_content"
@@ -34,7 +35,7 @@
                 android:text="@{expensesRowModel.txtHeadlineFour}"
                 style="@style/txtRobotoregular16_2" tools:text="@string/lbl_rent"/>
             <TextView android:ellipsize="end"
-                android:id="@+id/txtSupportingtextThree"
+                android:id="@+id/paidBy"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_3pxv"
                 android:layout_width="match_parent"

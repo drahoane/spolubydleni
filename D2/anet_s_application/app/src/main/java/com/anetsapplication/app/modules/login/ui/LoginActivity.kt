@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -46,16 +47,17 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
       val passwordText = password.text.toString();
 
       if(TextUtils.isEmpty(usernameText) || TextUtils.isEmpty(passwordText)) {
-        Toast.makeText(this, "Fill out all inputs", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Fill out all inputs.", Toast.LENGTH_SHORT).show()
       } else {
-        val checkUser = db.checkUserLogin(usernameText, passwordText)
-        if(checkUser) {
-          Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+        val user_id = db.checkUserLogin(usernameText, passwordText)
+        if(user_id != -1) {
+          Toast.makeText(this, "Login successful.", Toast.LENGTH_SHORT).show()
           val destIntent = HouseholdsActivity.getIntent(this, null)
-          destIntent.putExtra("username", usernameText)
+          destIntent.putExtra("user_id", user_id.toString())
           startActivity(destIntent)
+          Log.e("Logged in as User ID", user_id.toString())
         } else {
-          Toast.makeText(this, "Password & username don't match", Toast.LENGTH_SHORT).show()
+          Toast.makeText(this, "Credentials don't match.", Toast.LENGTH_SHORT).show()
         }
       }
     }

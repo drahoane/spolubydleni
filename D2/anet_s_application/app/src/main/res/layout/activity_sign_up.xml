@@ -72,8 +72,8 @@
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:paddingBottom="@dimen/_1pxv"
                             android:singleLine="true"
-                            android:text="@{signUpVM.signUpModel.txtLabeltextOne}"
-                            style="@style/txtSolid" tools:text="@string/lbl_username"/>
+                            android:text="Username"
+                            style="@style/txtSolid"/>
                         <EditText android:ellipsize="end"
                             android:id="@+id/editUsername"
                             android:layout_height="wrap_content"
@@ -83,8 +83,8 @@
                             android:layout_width="match_parent"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
-                            android:hint="@{signUpVM.signUpModel.txtPlaceholdertex}"
-                            style="@style/txtRobotoregular16" tools:hint="@string/msg_enter_your_username"/>
+                            android:hint="Enter your username..."
+                            style="@style/txtRobotoregular16"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -117,8 +117,8 @@
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:paddingBottom="@dimen/_1pxv"
                             android:singleLine="true"
-                            android:text="@{signUpVM.signUpModel.txtLabeltextOne}"
-                            style="@style/txtSolid" tools:text="@string/lbl_password"/>
+                            android:text="Password"
+                            style="@style/txtSolid" />
                         <EditText android:ellipsize="end"
                             android:id="@+id/editPassword"
                             android:layout_height="wrap_content"
@@ -129,8 +129,8 @@
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
                             android:inputType="textPassword"
-                            android:hint="@{signUpVM.signUpModel.txtPlaceholdertex}"
-                            style="@style/txtRobotoregular16" tools:hint="@string/msg_enter_your_pass"/>
+                            android:hint="Enter your password..."
+                            style="@style/txtRobotoregular16"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -163,8 +163,8 @@
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:paddingBottom="@dimen/_1pxv"
                             android:singleLine="true"
-                            android:text="@{signUpVM.signUpModel.txtLabeltextOne}"
-                            style="@style/txtSolid" tools:text="@string/lbl_repeat_password"/>
+                            android:text="Repeat password"
+                            style="@style/txtSolid"/>
                         <EditText android:ellipsize="end"
                             android:id="@+id/editControlPassword"
                             android:layout_height="wrap_content"
@@ -175,8 +175,8 @@
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
                             android:inputType="textPassword"
-                            android:hint="@{signUpVM.signUpModel.txtPlaceholdertex}"
-                            style="@style/txtRobotoregular16" tools:hint="@string/msg_enter_your_pass2"/>
+                            android:hint="Enter your password again..."
+                            style="@style/txtRobotoregular16" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -209,8 +209,8 @@
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:paddingBottom="@dimen/_1pxv"
                             android:singleLine="true"
-                            android:text="@{signUpVM.signUpModel.txtLabeltextOne}"
-                            style="@style/txtSolid" tools:text="@string/lbl_email"/>
+                            android:text="Email"
+                            style="@style/txtSolid"/>
                         <EditText android:ellipsize="end"
                             android:id="@+id/editEmail"
                             android:layout_height="wrap_content"
@@ -220,8 +220,8 @@
                             android:layout_width="match_parent"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
-                            android:hint="@{signUpVM.signUpModel.txtPlaceholdertex}"
-                            style="@style/txtRobotoregular16" tools:hint="@string/msg_enter_your_emai"/>
+                            android:hint="Enter your email..."
+                            style="@style/txtRobotoregular16"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

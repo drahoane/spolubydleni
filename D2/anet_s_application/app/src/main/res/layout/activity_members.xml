@@ -136,24 +136,22 @@
                     android:id="@+id/lineDivider"
                     android:layout_height="@dimen/_1pxv" android:layout_width="@dimen/_390pxh"/>
             </LinearLayout>
-            <androidx.recyclerview.widget.RecyclerView
-                android:gravity="center_horizontal"
-                android:id="@+id/recyclerMembers"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="@dimen/_45pxh"
-                android:layout_marginStart="@dimen/_45pxh"
-                android:layout_marginTop="@dimen/_37pxv"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                itemSpace="@{@dimen/_23pxh}" tools:itemCount="4" tools:listitem="@layout/row_members"/>
-            <LinearLayout android:id="@+id/linearRowgrid"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_40pxh"
-                android:layout_marginStart="@dimen/_45pxh"
-                android:layout_marginTop="@dimen/_10pxv"
-                android:layout_width="match_parent" android:orientation="horizontal">
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:gravity="center_horizontal"
+                    android:id="@+id/recyclerMembers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_45pxh"
+                    android:layout_marginStart="@dimen/_45pxh"
+                    android:layout_marginTop="@dimen/_37pxv"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    itemSpace="@{@dimen/_23pxh}" tools:itemCount="4" tools:listitem="@layout/row_members"/>
+
                 <TextView
                     android:background="@drawable/rectangle_bg_deep_purple_800_radius_20"
                     android:drawablePadding="@dimen/_11pxh"
@@ -161,17 +159,19 @@
                     android:ellipsize="end"
                     android:hint="@string/lbl_invite_people"
                     android:id="@+id/etButton" android:inputType="text"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_50pxh"
                     android:layout_marginBottom="@dimen/_8pxv"
                     android:layout_weight="0.72"
-                    android:layout_width="0dp"
-                    android:layout_marginTop="@dimen/_30pxv"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="@dimen/_50pxh"
+                    android:layout_marginTop="@dimen/_500pxv"
                     android:lineSpacingExtra="@dimen/_3pxh"
                     android:paddingBottom="@dimen/_10pxv"
                     android:paddingEnd="@dimen/_24pxh"
                     android:paddingStart="@dimen/_19pxh"
                     android:paddingTop="@dimen/_12pxv"
                     android:singleLine="true"
+                    android:gravity="center"
                     android:text="@={membersVM.membersModel.etButtonValue}"
                     android:textColorHint="@color/white_A700"
                     style="@style/etSolidRounded" tools:ignore="Autofill"/>
@@ -179,20 +179,21 @@
                     android:background="@drawable/rectangle_bg_deep_purple_800_radius_16"
                     android:id="@+id/btnGrid"
                     android:layout_gravity="top|end"
-                    android:layout_height="@dimen/_56pxh"
+                    android:layout_height="@dimen/_50pxh"
                     android:layout_marginBottom="@dimen/_20pxv"
                     android:layout_marginEnd="@dimen/_40pxh"
-                    android:layout_marginStart="@dimen/_40pxh"
-                    android:layout_marginTop="@dimen/_20pxv"
+                    android:layout_marginStart="@dimen/_300pxh"
+                    android:layout_marginTop="@dimen/_500pxv"
                     android:layout_width="@dimen/_56pxh"
                     android:paddingHorizontal="@dimen/_20pxh"
                     android:paddingVertical="@dimen/_20pxv"
                     android:scaleType="fitCenter"
                     android:src="@drawable/img_grid" tools:ignore="ContentDescription"/>
-            </LinearLayout>
+            </RelativeLayout>
             <LinearLayout
                 android:id="@+id/frameStackhome"
-                android:padding="@dimen/_12pxh"
+                android:paddingVertical="@dimen/_12pxh"
+                android:paddingHorizontal="@dimen/_5pxh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" style="@style/groupStyledeep_purple_800">

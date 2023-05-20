@@ -5,6 +5,11 @@ import com.anetsapplication.app.appcomponents.di.MyApp
 import kotlin.String
 
 data class DetailModel(
+  var comment_text: String? = "",
+  var created_at: String? = "",
+  var expense_id: Int? = -1,
+  var from_user_id: Int? = -1,
+
   /**
    * TODO Replace with dynamic value
    */

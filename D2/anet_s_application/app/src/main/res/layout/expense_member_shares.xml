@@ -34,11 +34,25 @@
             android:layout_marginStart="@dimen/_76pxh"
             android:layout_weight="0.32" android:layout_width="0dp" android:orientation="horizontal">
 
-            <CheckBox android:ellipsize="end" android:id="@+id/checkbox"
+            <EditText android:ellipsize="end" android:id="@+id/txtInput"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.7" android:layout_width="0dp"
-                android:buttonTint="#4f378b"
-                android:singleLine="true" />
+                android:layout_weight="0.31" android:layout_width="0dp"
+                android:lineSpacingExtra="@dimen/_3pxh"
+                android:paddingBottom="@dimen/_2pxv"
+                android:paddingStart="@dimen/_11pxh"
+                android:paddingTop="@dimen/_5pxv"
+                android:singleLine="true"/>
+            <TextView android:ellipsize="end"
+                android:layout_gravity="center"
+                android:id="@+id/txtShares"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_6pxh"
+                android:layout_weight="0.69" android:layout_width="0dp"
+                android:lineSpacingExtra="@dimen/_3pxh"
+                android:singleLine="true"
+                android:text="shares"
+                style="@style/txtRobotomedium14_3"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

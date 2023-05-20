@@ -45,19 +45,19 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sig
       val saveData = db.insertData(usernameText, passwordText, email)
 
       if(TextUtils.isEmpty(usernameText) || TextUtils.isEmpty(passwordText) || TextUtils.isEmpty(controlPasswordText) || TextUtils.isEmpty(email)) {
-        Toast.makeText(this, "Fill out all inputs", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Fill out all inputs.", Toast.LENGTH_SHORT).show()
       } else {
         if(passwordText == controlPasswordText) {
           if(saveData) {
-            Toast.makeText(this, "Signup successful", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Signup successful.", Toast.LENGTH_SHORT).show()
             val destIntent = LoginActivity.getIntent(this, null)
             startActivity(destIntent)
           } else {
-            Toast.makeText(this, "User exists", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Username already exists.", Toast.LENGTH_SHORT).show()
           }
         }
         else {
-          Toast.makeText(this, "Passwords don't match", Toast.LENGTH_SHORT).show()
+          Toast.makeText(this, "Passwords don't match.", Toast.LENGTH_SHORT).show()
         }
       }
     }

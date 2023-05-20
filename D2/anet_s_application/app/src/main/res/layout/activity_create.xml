@@ -121,8 +121,8 @@
                             android:layout_width="match_parent"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
-                            android:hint="@{createVM.createModel.txtPlaceholdertex}"
-                            style="@style/txtRobotoregular16" tools:hint="@string/msg_enter_household_name"/>
+                            android:hint="Enter household name..."
+                            style="@style/txtRobotoregular16"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -155,7 +155,8 @@
                 android:layout_weight="1"/>
             <LinearLayout
                 android:id="@+id/frameStackhome"
-                android:padding="@dimen/_12pxh"
+                android:paddingVertical="@dimen/_12pxh"
+                android:paddingHorizontal="@dimen/_5pxh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" style="@style/groupStyledeep_purple_800">

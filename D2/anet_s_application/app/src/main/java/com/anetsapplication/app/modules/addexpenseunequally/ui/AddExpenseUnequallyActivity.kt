@@ -12,7 +12,9 @@ import com.anetsapplication.app.modules.addexpensebyshares.ui.AddExpenseByShares
 import com.anetsapplication.app.modules.addexpenseequally.ui.AddExpenseEquallyActivity
 import com.anetsapplication.app.modules.addexpenseunequally.`data`.model.Listavatars3davRowModel
 import com.anetsapplication.app.modules.addexpenseunequally.`data`.viewmodel.AddExpenseUnequallyVM
+import com.anetsapplication.app.modules.create.ui.CreateActivity
 import com.anetsapplication.app.modules.expenses.ui.ExpensesActivity
+import com.anetsapplication.app.modules.households.ui.HouseholdsActivity
 import com.anetsapplication.app.modules.notifications.ui.NotificationsActivity
 import kotlin.Int
 import kotlin.String
@@ -26,7 +28,7 @@ class AddExpenseUnequallyActivity :
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     val listavatars3davAdapter =
     Listavatars3davAdapter(viewModel.listavatars3davList.value?:mutableListOf())
-    binding.recyclerListavatars3dav.adapter = listavatars3davAdapter
+    /*binding.recyclerListavatars3dav.adapter = listavatars3davAdapter
     listavatars3davAdapter.setOnItemClickListener(
     object : Listavatars3davAdapter.OnItemClickListener {
       override fun onItemClick(view:View, position:Int, item : Listavatars3davRowModel) {
@@ -37,27 +39,43 @@ class AddExpenseUnequallyActivity :
     viewModel.listavatars3davList.observe(this) {
       listavatars3davAdapter.updateData(it)
     }
-    binding.addExpenseUnequallyVM = viewModel
+    binding.addExpenseUnequallyVM = viewModel*/
   }
 
   override fun setUpClicks(): Unit {
-    binding.btnAddExpense.setOnClickListener {
-      val destIntent = ExpensesActivity.getIntent(this, null)
+    binding.linearTab1.setOnClickListener {
+      val destIntent = AddExpenseEquallyActivity.getIntent(this, null)
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+      destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
+      destIntent.putExtra("expense_id", intent.getStringExtra("expense_id"))
+      startActivity(destIntent)
+    }
+    binding.btnByShares.setOnClickListener {
+      val destIntent = AddExpenseBySharesActivity.getIntent(this, null)
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+      destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
+      destIntent.putExtra("expense_id", intent.getStringExtra("expense_id"))
+      startActivity(destIntent)
+    }
+    binding.linearSegment1.setOnClickListener {
+      val destIntent = CreateActivity.getIntent(this, null)
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+      startActivity(destIntent)
+    }
+    binding.linearSegment2.setOnClickListener {
+      val destIntent = HouseholdsActivity.getIntent(this, null)
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
       startActivity(destIntent)
     }
     binding.linearSegment3.setOnClickListener {
       val destIntent = NotificationsActivity.getIntent(this, null)
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
       startActivity(destIntent)
     }
     binding.imageArrowleft.setOnClickListener {
-      finish()
-    }
-    binding.btnByShares.setOnClickListener {
-      val destIntent = AddExpenseBySharesActivity.getIntent(this, null)
-      startActivity(destIntent)
-    }
-    binding.linearTab1.setOnClickListener {
-      val destIntent = AddExpenseEquallyActivity.getIntent(this, null)
+      val destIntent = ExpensesActivity.getIntent(this, null)
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+      destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
       startActivity(destIntent)
     }
   }

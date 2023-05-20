@@ -41,12 +41,12 @@ class NotificationsActivity :
   override fun setUpClicks(): Unit {
     binding.linearSegment1.setOnClickListener {
       val destIntent = CreateActivity.getIntent(this, null)
-      destIntent.putExtra("username", intent.getStringExtra("username"))
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
       startActivity(destIntent)
     }
     binding.linearSegment2.setOnClickListener {
       val destIntent = HouseholdsActivity.getIntent(this, null)
-      destIntent.putExtra("username", intent.getStringExtra("username"))
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
       startActivity(destIntent)
     }
   }

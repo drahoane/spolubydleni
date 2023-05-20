@@ -5,7 +5,14 @@ import com.anetsapplication.app.appcomponents.di.MyApp
 import kotlin.String
 
 data class ExpensesModel(
-  /**
+
+  var username: String? = "",
+  var expense_id: Int? = -1,
+  var expense_name: String? = "",
+  var expense_cost: Double? = -1.0,
+  var currency: String? = "",
+  var paid_by_id: Int? = -1,
+  /*/**
    * TODO Replace with dynamic value
    */
   var txtHeadline: String? = MyApp.getInstance().resources.getString(R.string.lbl_my_sweet_home)
@@ -90,6 +97,6 @@ data class ExpensesModel(
   /**
    * TODO Replace with dynamic value
    */
-  var txtLabeltextTwo: String? = MyApp.getInstance().resources.getString(R.string.lbl_notifications)
+  var txtLabeltextTwo: String? = MyApp.getInstance().resources.getString(R.string.lbl_notifications)*/
 
 )

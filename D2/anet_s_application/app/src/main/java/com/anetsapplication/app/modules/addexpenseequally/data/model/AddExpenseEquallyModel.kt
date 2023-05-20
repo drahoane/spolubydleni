@@ -7,4 +7,6 @@ data class AddExpenseEquallyModel(
   var household_date: String? = "",
   var member_name: String? = "",
   var paidBy: String? = "",
+  var username: String? = "",
+  var user_id: Int = -1
 )

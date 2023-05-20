@@ -37,7 +37,7 @@
                         android:layout_marginBottom="@dimen/_9pxv"
                         android:layout_marginStart="@dimen/_84pxh"
                         android:layout_marginTop="@dimen/_4pxv"
-                        android:layout_weight="0.9"
+                        android:layout_weight="0.95"
                         android:layout_width="0dp"
                         android:lineSpacingExtra="@dimen/_4pxh"
                         android:singleLine="true"
@@ -49,7 +49,7 @@
                         android:layout_marginBottom="@dimen/_10pxv"
                         android:layout_marginStart="@dimen/_94pxh"
                         android:layout_marginTop="@dimen/_10pxv"
-                        android:layout_weight="0.11"
+                        android:layout_weight="0.15"
                         android:layout_width="0dp"
                         android:orientation="vertical" style="@style/groupStylecornerRadius_4">
                         <ImageView android:gravity="start"
@@ -73,7 +73,8 @@
                 itemSpace="@{@dimen/_1pxh}" tools:itemCount="4" tools:listitem="@layout/row_notifications"/>
             <LinearLayout
                 android:id="@+id/frameStackhome"
-                android:padding="@dimen/_12pxh"
+                android:paddingVertical="@dimen/_12pxh"
+                android:paddingHorizontal="@dimen/_5pxh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" style="@style/groupStyledeep_purple_800">

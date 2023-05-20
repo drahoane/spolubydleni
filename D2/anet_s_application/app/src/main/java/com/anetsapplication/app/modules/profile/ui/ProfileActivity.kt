@@ -1,10 +1,14 @@
 package com.anetsapplication.app.modules.profile.ui
 
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import com.anetsapplication.app.R
 import com.anetsapplication.app.appcomponents.base.BaseActivity
 import com.anetsapplication.app.databinding.ActivityProfileBinding
+import com.anetsapplication.app.modules.households.ui.HouseholdsActivity
 import com.anetsapplication.app.modules.profile.`data`.model.ProfileRowModel
 import com.anetsapplication.app.modules.profile.`data`.viewmodel.ProfileVM
 import kotlin.Int
@@ -47,7 +51,13 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(R.layout.activity_p
   }
 
   companion object {
-    const val TAG: String = "PROFILE_ACTIVITY"
+    const val TAG: String = "HOUSEHOLDS_ACTIVITY"
 
+
+    fun getIntent(context: Context, bundle: Bundle?): Intent {
+      val destIntent = Intent(context, ProfileActivity::class.java)
+      destIntent.putExtra("bundle", bundle)
+      return destIntent
+    }
   }
 }

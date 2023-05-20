@@ -140,7 +140,7 @@
                                 android:letterSpacing="0.01"
                                 android:lineSpacingExtra="@dimen/_3pxh"
                                 android:singleLine="true"
-                                android:text="@{expensesVM.expensesModel.txtLabel}"
+                                android:text="Expenses"
                                 tools:text="@string/lbl_expenses" />
 
                             <View
@@ -179,34 +179,47 @@
                         android:background="@color/gray_300" />
                 </LinearLayout>
             </FrameLayout>
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerExpenses"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-
+            <RelativeLayout
+                android:id="@+id/noExpensesFound"
+                android:gravity="center"
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                itemSpace="@{@dimen/_1pxh}" tools:itemCount="4" tools:listitem="@layout/row_expenses"/>
-            <ImageButton
-                android:background="@drawable/rectangle_bg_deep_purple_800_radius_16"
-                android:id="@+id/btnGrid"
-                android:layout_gravity="top|end"
-                android:layout_height="@dimen/_56pxh"
-                android:layout_marginBottom="@dimen/_20pxv"
-                android:layout_marginEnd="@dimen/_40pxh"
-                android:layout_marginStart="@dimen/_40pxh"
-                android:layout_marginTop="@dimen/_20pxv"
-                android:layout_width="@dimen/_56pxh"
-                android:paddingHorizontal="@dimen/_20pxh"
-                android:paddingVertical="@dimen/_20pxv"
-                android:scaleType="fitCenter"
-                android:src="@drawable/img_grid" tools:ignore="ContentDescription"/>
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="@dimen/_20pxv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No expenses found."
+                    android:textSize="16sp">
+                </TextView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerExpenses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <ImageButton
+                    android:background="@drawable/rectangle_bg_deep_purple_800_radius_16"
+                    android:id="@+id/btnGrid"
+                    android:layout_gravity="top|end"
+                    android:layout_height="@dimen/_50pxh"
+                    android:layout_marginBottom="@dimen/_20pxv"
+                    android:layout_marginEnd="@dimen/_40pxh"
+                    android:layout_marginStart="@dimen/_300pxh"
+                    android:layout_marginTop="@dimen/_500pxv"
+                    android:layout_width="@dimen/_56pxh"
+                    android:paddingHorizontal="@dimen/_20pxh"
+                    android:paddingVertical="@dimen/_20pxv"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img_grid" tools:ignore="ContentDescription"/>
+            </RelativeLayout>
             <LinearLayout
                 android:id="@+id/frameStackhome"
-                android:padding="@dimen/_12pxh"
+                android:paddingVertical="@dimen/_12pxh"
+                android:paddingHorizontal="@dimen/_5pxh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" style="@style/groupStyledeep_purple_800">

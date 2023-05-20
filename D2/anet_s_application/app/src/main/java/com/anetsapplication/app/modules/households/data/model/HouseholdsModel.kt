@@ -6,6 +6,7 @@ import kotlin.String
 
 data class HouseholdsModel(
 
+  var household_id: Int? = -1,
   var household_name: String? = "",
   var household_date: String? = "",
   /**

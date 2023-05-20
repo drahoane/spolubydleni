@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import com.anetsapplication.app.R
 import com.anetsapplication.app.appcomponents.base.BaseActivity
 import com.anetsapplication.app.databinding.ActivityMembersBinding
+import com.anetsapplication.app.db.HouseholdDBHelper
 import com.anetsapplication.app.modules.addexpenseequally.ui.AddExpenseEquallyActivity
 import com.anetsapplication.app.modules.create.ui.CreateActivity
 import com.anetsapplication.app.modules.expenses.ui.ExpensesActivity
@@ -25,14 +26,18 @@ import kotlin.Unit
 
 class MembersActivity : BaseActivity<ActivityMembersBinding>(R.layout.activity_members) {
   private val viewModel: MembersVM by viewModels<MembersVM>()
+  private lateinit var householdsHelper: HouseholdDBHelper
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     val membersAdapter = MembersAdapter(viewModel.membersList.value?:mutableListOf())
     binding.recyclerMembers.adapter = membersAdapter
 
+    householdsHelper = HouseholdDBHelper(this)
+
     val headline: TextView = findViewById(R.id.txtHeadline)
-    headline.text = intent.getStringExtra("household_name")
+    val stdList = householdsHelper.getDataByHouseholdID(intent.getStringExtra("household_id")?.toInt())
+    headline.text = stdList[0].household_name
 
     membersAdapter.setOnItemClickListener(
     object : MembersAdapter.OnItemClickListener {
@@ -50,40 +55,37 @@ class MembersActivity : BaseActivity<ActivityMembersBinding>(R.layout.activity_m
   override fun setUpClicks(): Unit {
     binding.btnOverview.setOnClickListener {
       val destIntent = OverviewActivity.getIntent(this, null)
-      destIntent.putExtra("username", intent.getStringExtra("username"))
-      destIntent.putExtra("household_name", intent.getStringExtra("household_name"))
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+      destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
       startActivity(destIntent)
     }
     binding.btnExpenses.setOnClickListener {
       val destIntent = ExpensesActivity.getIntent(this, null)
-      destIntent.putExtra("username", intent.getStringExtra("username"))
-      destIntent.putExtra("household_name", intent.getStringExtra("household_name"))
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+      destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
       startActivity(destIntent)
     }
     binding.btnGrid.setOnClickListener {
       val destIntent = AddExpenseEquallyActivity.getIntent(this, null)
       Log.e("Go to add expense equally as user:", intent.getStringExtra("username").toString())
       Log.e("Go to add expense equally as household_name:", intent.getStringExtra("household_name").toString())
-      destIntent.putExtra("username", intent.getStringExtra("username"))
-      destIntent.putExtra("household_name", intent.getStringExtra("household_name"))
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+      destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
       startActivity(destIntent)
     }
     binding.linearSegment1.setOnClickListener {
       val destIntent = CreateActivity.getIntent(this, null)
-      destIntent.putExtra("username", intent.getStringExtra("username"))
-      destIntent.putExtra("household_name", intent.getStringExtra("household_name"))
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
       startActivity(destIntent)
     }
     binding.linearSegment2.setOnClickListener {
       val destIntent = HouseholdsActivity.getIntent(this, null)
-      destIntent.putExtra("username", intent.getStringExtra("username"))
-      destIntent.putExtra("household_name", intent.getStringExtra("household_name"))
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
       startActivity(destIntent)
     }
     binding.linearSegment3.setOnClickListener {
       val destIntent = NotificationsActivity.getIntent(this, null)
-      destIntent.putExtra("username", intent.getStringExtra("username"))
-      destIntent.putExtra("household_name", intent.getStringExtra("household_name"))
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
       startActivity(destIntent)
     }
   }

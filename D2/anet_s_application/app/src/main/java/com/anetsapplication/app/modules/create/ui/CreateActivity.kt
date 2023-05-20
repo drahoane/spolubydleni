@@ -45,10 +45,10 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
         Toast.makeText(this, "Fill out Household name.", Toast.LENGTH_SHORT).show()
       } else {
         val std = HouseholdsModel(household_name = householdText, household_date = date)
-        db.insertData(std, intent.getStringExtra("username"))
+        db.insertData(std, intent.getStringExtra("user_id")?.toInt())
         Toast.makeText(this, "Household successfully created.", Toast.LENGTH_SHORT).show()
         val destIntent = HouseholdsActivity.getIntent(this, null)
-        destIntent.putExtra("username", intent.getStringExtra("username"))
+        destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
         startActivity(destIntent)
       }
     }
@@ -57,12 +57,12 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
   override fun setUpClicks(): Unit {
     binding.linearSegment3.setOnClickListener {
       val destIntent = NotificationsActivity.getIntent(this, null)
-      destIntent.putExtra("username", intent.getStringExtra("username"))
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
       startActivity(destIntent)
     }
     binding.linearSegment2.setOnClickListener {
       val destIntent = HouseholdsActivity.getIntent(this, null)
-      destIntent.putExtra("username", intent.getStringExtra("username"))
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
       startActivity(destIntent)
     }
   }
