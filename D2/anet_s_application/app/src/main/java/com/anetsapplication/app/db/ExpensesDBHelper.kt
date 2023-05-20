@@ -22,6 +22,7 @@ import java.util.*
             myDB?.execSQL("drop table if exists Expenses")
         }
 
+        // NAPR: expensesHelper.insertData("new shoes", 2.85, "CZK", 1, 1)
         fun insertData(expense_name: String, expense_cost: Double, currency: String, paid_by_id: Int, household_id: Int?): Boolean {
             val myDB = this.writableDatabase;
             val data = ContentValues();
@@ -120,6 +121,7 @@ import java.util.*
                     val myDB2 = this.readableDatabase;
                     val cursor2: Cursor?
 
+                    // malo by tu byt query 2
                     try {
                         cursor2 = myDB2.rawQuery(query, null)
                     } catch (e: Exception) {

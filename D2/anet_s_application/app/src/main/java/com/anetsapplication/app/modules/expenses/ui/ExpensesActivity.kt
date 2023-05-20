@@ -124,7 +124,6 @@ class ExpensesActivity : BaseActivity<ActivityExpensesBinding>(R.layout.activity
   }
 
   fun getHouseholds() {
-    expensesHelper.insertData("new shoes", 2.85, "CZK", 1, 1)
     val household_id = intent.getStringExtra("household_id")
     val stdList = expensesHelper.getDataByHouseholdID(household_id?.toInt())
     Log.e("Expenses count", "${stdList.size}")
