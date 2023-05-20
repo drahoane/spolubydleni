@@ -438,8 +438,8 @@
                                     android:singleLine="true"
                                     android:text="@{editExpenseVM.editExpenseModel.txtLabeltext}"
                                     style="@style/txtSolid_1" tools:text="@string/lbl_name"/>
-                                    <TextView android:ellipsize="end"
-                                    android:id="@+id/txtInputtext"
+                                    <EditText android:ellipsize="end"
+                                    android:id="@+id/enterEditName"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/_9pxv"
                                     android:layout_marginEnd="@dimen/_10pxh"
@@ -492,9 +492,9 @@
                                     android:singleLine="true"
                                     android:text="@{editExpenseVM.editExpenseModel.txtTimeZone}"
                                     style="@style/txtSolid_1" tools:text="@string/lbl_cost"/>
-                                    <TextView
+                                    <EditText
                                     android:ellipsize="end"
-                                    android:id="@+id/txtInputtextOne"
+                                    android:id="@+id/enterEditCost"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/_11pxv"
                                     android:layout_marginEnd="@dimen/_10pxh"
@@ -550,9 +550,9 @@
                                     android:layout_marginEnd="@dimen/_10pxh"
                                     android:layout_marginTop="@dimen/_9pxv"
                                     android:layout_width="match_parent" android:orientation="horizontal">
-                                    <TextView
+                                    <EditText
                                     android:ellipsize="end"
-                                    android:id="@+id/txtPrice"
+                                    android:id="@+id/enterEditCurrency"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.76"
                                     android:layout_width="0dp"
@@ -626,9 +626,9 @@
                                     android:singleLine="true"
                                     android:text="@{editExpenseVM.editExpenseModel.txtLabeltextTwo}"
                                     style="@style/txtSolid_1" tools:text="@string/lbl_paid_by"/>
-                                    <TextView
+                                    <EditText
                                     android:ellipsize="end"
-                                    android:id="@+id/txtInputtextTwo"
+                                    android:id="@+id/enterEditPaidBy"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="@dimen/_10pxh"
                                     android:layout_marginTop="@dimen/_11pxv"

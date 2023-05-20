@@ -6,13 +6,11 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.anetsapplication.app.modules.addexpenseequally.data.model.AddExpenseEquallyModel
 import android.util.Log
 import com.anetsapplication.app.modules.expenses.data.model.ExpensesModel
-import com.anetsapplication.app.modules.households.data.model.HouseholdsModel
 import java.util.*
 
-    class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", null, 1) {
+class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", null, 1) {
         override fun onCreate(myDB: SQLiteDatabase?) {
             myDB?.execSQL("create table Expenses (expense_id INTEGER primary key autoincrement, expense_name TEXT, " +
                     "expense_cost REAL, currency TEXT, paid_by_id INTEGER, household_id INTEGER)")
@@ -144,6 +142,25 @@ import java.util.*
                 } while (cursor.moveToNext())
             }
             return stdList
+        }
+
+        fun editExpense(expense: ArrayList<ExpensesModel>, expense_name: String?, expense_cost: Double?,
+                        currency: String?, paid_by_id: Int?, household_id: Int?): Boolean {
+            val db = this.writableDatabase
+            val values = ContentValues()
+
+            values.put("expense_name", expense_name)
+            values.put("expense_cost", expense_cost)
+            values.put("currency", currency)
+            values.put("paid_by_id", paid_by_id)
+            values.put("household_id", household_id)
+
+            val result = db.insert("Expenses", null, values);
+            db.close()
+            if(result == (-1).toLong()) {
+                return false;
+            }
+            return true;
         }
 
     /*@SuppressLint("Range")

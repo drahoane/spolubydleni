@@ -71,13 +71,11 @@ class AddExpenseEquallyActivity :
       val currency = currency.text.toString()
       val paidBy = paidBy.text.toString()
 
-      val date = LocalDateTime.now().toString()
-
-      if (TextUtils.isEmpty(name) || TextUtils.isEmpty(cost) || TextUtils.isEmpty(currency) || TextUtils.isEmpty(paidBy)) {
+      if (TextUtils.isEmpty(name) || TextUtils.isEmpty(cost)  || TextUtils.isEmpty(currency) || TextUtils.isEmpty(paidBy)) {
         Toast.makeText(this, "Fill out all fields.", Toast.LENGTH_SHORT).show()
       } else {
-        //db.insertData(name, cost, currency, paidBy, "zly nazov")
         Toast.makeText(this, "Expense successfully created.", Toast.LENGTH_SHORT).show()
+        db.insertData(name, cost.toDouble(), currency, paidBy.toInt(), intent.getStringExtra("household_id")?.toInt());
         val destIntent = ExpensesActivity.getIntent(this, null)
         destIntent.putExtra("username", intent.getStringExtra("username"))
         startActivity(destIntent)
