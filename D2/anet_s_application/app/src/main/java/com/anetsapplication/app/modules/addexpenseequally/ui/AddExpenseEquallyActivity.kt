@@ -27,6 +27,7 @@ import com.anetsapplication.app.modules.households.ui.HouseholdsActivity
 import com.anetsapplication.app.modules.notifications.ui.NotificationsActivity
 import kotlin.String
 import kotlin.Unit
+import kotlin.math.expm1
 
 class AddExpenseEquallyActivity :
     BaseActivity<ActivityAddExpenseEquallyBinding>(R.layout.activity_add_expense_equally) {
@@ -56,6 +57,7 @@ class AddExpenseEquallyActivity :
 
     householdsHelper = HouseholdDBHelper(this)
     userdataHelper = UserdataDBHelper(this)
+    householdUserDBHelper = HouseholdUserDBHelper(this)
 
     recyclerView = findViewById(R.id.recyclerMembers)
     initRecyclerView()
@@ -68,30 +70,49 @@ class AddExpenseEquallyActivity :
     val stdList = householdsHelper.getDataByHouseholdID(householdId)
     headline.text = stdList[0].household_name
 
+    var members = householdUserDBHelper.getAllMembers(householdId)
+
+    val adapter = recyclerView.adapter as AddExpenseEquallyAdapter
+    val checkedList = adapter.getChecked()
+
+    if(intent.getStringExtra("expense_id")?.toInt() != null) {
+      addBtn.text = "Edit expense"
+      var stdList = expensesDBHelper.getDataByExpenseID(intent.getStringExtra("expense_id")?.toInt())
+      expense_name.setText(stdList[0].expense_name)
+      expense_cost.setText(stdList[0].expense_cost.toString())
+      currency.setText(stdList[0].currency)
+    } else {
+      addBtn.text = "Add expense"
+    }
+
     addBtn.setOnClickListener {
       val name = expense_name.text.toString()
       val cost = expense_cost.text.toString()
       val currency = currency.text.toString()
-      val paidBy = paidBy.text.toString()
 
-      if (TextUtils.isEmpty(name) || TextUtils.isEmpty(cost)  || TextUtils.isEmpty(currency) || TextUtils.isEmpty(paidBy)) {
+      if (TextUtils.isEmpty(name) || TextUtils.isEmpty(cost)  || TextUtils.isEmpty(currency)) {
         Toast.makeText(this, "Fill out all fields.", Toast.LENGTH_SHORT).show()
       } else {
-        Toast.makeText(this, "Expense successfully created.", Toast.LENGTH_SHORT).show()
-        var expenseId = expensesDBHelper.insertData(name, cost.toDouble(), currency, paidBy.toInt(), intent.getStringExtra("household_id")?.toInt())
-        var members = householdUserDBHelper.getAllMembers(householdId)
-
-        val adapter = recyclerView.adapter as AddExpenseEquallyAdapter
-        val checkedList = adapter.getChecked()
+        var expenseId = intent.getStringExtra("expense_id")?.toLong()
+        if(intent.getStringExtra("expense_id")?.toInt() != null) {
+          Toast.makeText(this, "Expense successfully updated.", Toast.LENGTH_SHORT).show()
+          expensesDBHelper.editExpense(name, cost.toDouble(), currency, 1, intent.getStringExtra("household_id")?.toInt(), intent.getStringExtra("expense_id")?.toInt());
+        } else {
+          Toast.makeText(this, "Expense successfully created.", Toast.LENGTH_SHORT).show()
+          expenseId = expensesDBHelper.insertData(name, cost.toDouble(), currency, 0, intent.getStringExtra("household_id")?.toInt())
+        }
 
         for (member in members) {
           if (checkedList.contains(member.user_id)) {
-            debtDBHelper.insertData(expenseId.toInt(), member.user_id, cost.toDouble()/checkedList.count())
+            if (expenseId != null) {
+              debtDBHelper.insertData(expenseId.toInt(), member.user_id, cost.toDouble()/checkedList.count())
+            }
           }
         }
 
         val destIntent = ExpensesActivity.getIntent(this, null)
-        destIntent.putExtra("username", intent.getStringExtra("username"))
+        destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+        destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
         startActivity(destIntent)
       }
     }

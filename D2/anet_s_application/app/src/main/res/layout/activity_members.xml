@@ -120,7 +120,8 @@
                             android:layout_width="wrap_content"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
-                            style="@style/txtRobotomedium14_1" tools:text="@string/lbl_members"/>
+                            android:text="Members"
+                            style="@style/txtRobotomedium14_1" />
                         <View
                             android:background="@drawable/rectangle_bg_deep_purple_500_radius_tl_100_tr_100"
                             android:id="@+id/lineShape"

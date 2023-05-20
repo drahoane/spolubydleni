@@ -95,6 +95,7 @@
                                 <TextView android:ellipsize="end"
                                     android:id="@+id/txtLabeltext"
                                     android:layout_height="wrap_content"
+                                    style="@style/txtSolid"
                                     android:layout_marginEnd="@dimen/_10pxh"
                                     android:layout_width="wrap_content"
                                     android:lineSpacingExtra="@dimen/_3pxh"
@@ -111,6 +112,7 @@
                                     android:layout_width="match_parent"
                                     android:lineSpacingExtra="@dimen/_3pxh"
                                     android:singleLine="true"
+                                    android:textColorHint="#A9A9A9"
                                     style="@style/txtRobotoregular16"
                                     android:hint="Enter expense name..."/>
                             </LinearLayout>
@@ -148,6 +150,7 @@
                                         android:ellipsize="end"
                                         android:id="@+id/txtTimeZone"
                                         android:layout_height="wrap_content"
+                                        style="@style/txtSolid"
                                         android:layout_marginEnd="@dimen/_10pxh"
                                         android:layout_width="wrap_content"
                                         android:lineSpacingExtra="@dimen/_3pxh"
@@ -165,6 +168,7 @@
                                         android:layout_width="match_parent"
                                         android:lineSpacingExtra="@dimen/_3pxh"
                                         android:singleLine="true"
+                                        android:textColorHint="#A9A9A9"
                                         style="@style/txtRobotoregular16"
                                         android:hint="Enter the cost..."/>
                                 </LinearLayout>
@@ -198,6 +202,7 @@
                                         android:ellipsize="end"
                                         android:id="@+id/txtLabeltextOne"
                                         android:layout_height="wrap_content"
+                                        style="@style/txtSolid"
                                         android:layout_marginEnd="@dimen/_10pxh"
                                         android:layout_width="match_parent"
                                         android:lineSpacingExtra="@dimen/_3pxh"
@@ -220,6 +225,7 @@
                                             android:layout_width="0dp"
                                             android:lineSpacingExtra="@dimen/_3pxh"
                                             android:singleLine="true"
+                                            android:textColorHint="#A9A9A9"
                                             style="@style/txtRobotoregular16_2"
                                             android:hint="Currency..."/>
                                     </LinearLayout>

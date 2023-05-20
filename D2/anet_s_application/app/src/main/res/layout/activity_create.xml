@@ -121,6 +121,7 @@
                             android:layout_width="match_parent"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
+                            android:textColorHint="#A9A9A9"
                             android:hint="Enter household name..."
                             style="@style/txtRobotoregular16"/>
                     </LinearLayout>

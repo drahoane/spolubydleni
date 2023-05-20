@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 class DebtDBHelper(context: Context): SQLiteOpenHelper(context, "Debt", null, 1) {
     override fun onCreate(myDB: SQLiteDatabase?) {
-        myDB?.execSQL("create table Debt (expense_id INTEGER primary key, user_id INTEGER primary key, amount REAL)")
+        myDB?.execSQL("create table Debt (expense_id INTEGER primary key, user_id INTEGER, amount REAL)")
     }
 
     override fun onUpgrade(myDB: SQLiteDatabase?, p1: Int, p2: Int) {

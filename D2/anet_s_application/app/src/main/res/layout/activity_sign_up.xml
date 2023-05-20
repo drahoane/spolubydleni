@@ -83,6 +83,7 @@
                             android:layout_width="match_parent"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
+                            android:textColorHint="#A9A9A9"
                             android:hint="Enter your username..."
                             style="@style/txtRobotoregular16"/>
                     </LinearLayout>
@@ -129,6 +130,7 @@
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
                             android:inputType="textPassword"
+                            android:textColorHint="#A9A9A9"
                             android:hint="Enter your password..."
                             style="@style/txtRobotoregular16"/>
                     </LinearLayout>
@@ -175,6 +177,7 @@
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
                             android:inputType="textPassword"
+                            android:textColorHint="#A9A9A9"
                             android:hint="Enter your password again..."
                             style="@style/txtRobotoregular16" />
                     </LinearLayout>
@@ -220,6 +223,7 @@
                             android:layout_width="match_parent"
                             android:lineSpacingExtra="@dimen/_3pxh"
                             android:singleLine="true"
+                            android:textColorHint="#A9A9A9"
                             android:hint="Enter your email..."
                             style="@style/txtRobotoregular16"/>
                     </LinearLayout>

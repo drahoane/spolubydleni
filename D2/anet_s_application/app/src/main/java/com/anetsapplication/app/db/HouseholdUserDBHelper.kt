@@ -13,11 +13,12 @@ import java.util.ArrayList
 
 class HouseholdUserDBHelper(context: Context): SQLiteOpenHelper(context, "HouseholdUser", null, 1) {
     override fun onCreate(myDB: SQLiteDatabase?) {
-        myDB?.execSQL("create table HouseholdUser (household_id INTEGER primary key, user_id TEXT primary key)")
+        myDB?.execSQL("create table HouseholdUser (household_id INTEGER primary key, user_id TEXT)")
     }
 
     override fun onUpgrade(myDB: SQLiteDatabase?, p1: Int, p2: Int) {
         myDB?.execSQL("drop table if exists HouseholdUser")
+        myDB?.execSQL("create table HouseholdUser (household_id INTEGER primary key, user_id TEXT)")
     }
 
     fun insertData(household_id: String, user_id: String): Boolean {
@@ -37,7 +38,7 @@ class HouseholdUserDBHelper(context: Context): SQLiteOpenHelper(context, "Househ
             throw java.lang.Exception("Error... :]")
 
         val stdList: ArrayList<AddExpenseEquallyModel> = ArrayList();
-        val query = "select u.* from HouseholdUser hu join Userdata u ON hu.user_id = u.user_id where hu.household_id = '$household_id'";
+        val query = "select u.* from HouseholdUser hu inner join Userdata u ON hu.user_id = u.user_id where hu.household_id = '$household_id'";
 
         val myDB = this.readableDatabase;
         val cursor: Cursor?

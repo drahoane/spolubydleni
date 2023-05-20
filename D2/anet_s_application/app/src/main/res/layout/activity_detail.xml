@@ -267,6 +267,7 @@
                         android:layout_marginStart="@dimen/_18pxh"
                         android:layout_marginTop="@dimen/_1pxv"
                         android:layout_weight="0.9"
+                        android:textColorHint="#A9A9A9"
                         android:ellipsize="end"
                         android:lineSpacingExtra="@dimen/_3pxh"
                         android:singleLine="true"

@@ -189,6 +189,7 @@
                     android:layout_marginTop="@dimen/_20pxv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#A9A9A9"
                     android:text="No expenses found."
                     android:textSize="16sp">
                 </TextView>

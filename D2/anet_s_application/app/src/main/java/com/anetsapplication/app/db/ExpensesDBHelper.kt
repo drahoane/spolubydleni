@@ -144,8 +144,8 @@ class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", n
             return stdList
         }
 
-        fun editExpense(expense: ArrayList<ExpensesModel>, expense_name: String?, expense_cost: Double?,
-                        currency: String?, paid_by_id: Int?, household_id: Int?): Boolean {
+        fun editExpense(expense_name: String?, expense_cost: Double?,
+                        currency: String?, paid_by_id: Int?, household_id: Int?, expense_id: Int?) {
             val db = this.writableDatabase
             val values = ContentValues()
 
@@ -155,12 +155,8 @@ class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", n
             values.put("paid_by_id", paid_by_id)
             values.put("household_id", household_id)
 
-            val result = db.insert("Expenses", null, values);
+            val result = db.update("Expenses", values, "expense_id=?", arrayOf(expense_id.toString()));
             db.close()
-            if(result == (-1).toLong()) {
-                return false;
-            }
-            return true;
         }
 
     /*@SuppressLint("Range")

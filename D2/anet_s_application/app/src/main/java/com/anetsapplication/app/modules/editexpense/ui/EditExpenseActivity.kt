@@ -1,5 +1,8 @@
 package com.anetsapplication.app.modules.editexpense.ui
 
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -8,6 +11,7 @@ import com.anetsapplication.app.R
 import com.anetsapplication.app.appcomponents.base.BaseActivity
 import com.anetsapplication.app.databinding.ActivityEditExpenseBinding
 import com.anetsapplication.app.db.ExpensesDBHelper
+import com.anetsapplication.app.modules.addexpenseequally.ui.AddExpenseEquallyActivity
 import com.anetsapplication.app.modules.detail.ui.DetailActivity
 import com.anetsapplication.app.modules.editexpense.`data`.viewmodel.EditExpenseVM
 import com.anetsapplication.app.modules.expenses.ui.ExpensesActivity
@@ -47,8 +51,8 @@ class EditExpenseActivity : BaseActivity<ActivityEditExpenseBinding>(R.layout.ac
       if (oldData.isEmpty()) {
         Toast.makeText(this, "Expense with id=${expenseId} does not exist.", Toast.LENGTH_SHORT).show()
       } else {
-        Toast.makeText(this, "Expense successfully created.", Toast.LENGTH_SHORT).show()
-        db.editExpense(oldData, name, cost.toDouble(), currency, paidBy.toInt(), intent.getStringExtra("household_id")?.toInt());
+        Toast.makeText(this, "Expense successfully updated.", Toast.LENGTH_SHORT).show()
+        //db.editExpense(oldData, name, cost.toDouble(), currency, paidBy.toInt(), intent.getStringExtra("household_id")?.toInt(), intent.getStringExtra("expense_id")?.toInt());
         val destIntent = ExpensesActivity.getIntent(this, null)
         destIntent.putExtra("username", intent.getStringExtra("username"))
         startActivity(destIntent)
@@ -56,11 +60,18 @@ class EditExpenseActivity : BaseActivity<ActivityEditExpenseBinding>(R.layout.ac
     }
   }
 
-  override fun setUpClicks(): Unit {
-    binding.btnEditExpense.setOnClickListener {
-      val destIntent = DetailActivity.getIntent(this, null)
-      startActivity(destIntent)
+  companion object {
+    const val TAG: String = "ADD_EXPENSE_EQUALLY_ACTIVITY"
+
+
+    fun getIntent(context: Context, bundle: Bundle?): Intent {
+      val destIntent = Intent(context, AddExpenseEquallyActivity::class.java)
+      destIntent.putExtra("bundle", bundle)
+      return destIntent
     }
+  }
+  override fun setUpClicks(): Unit {
+    
     binding.imageArrowleft.setOnClickListener {
       finish()
     }
@@ -68,10 +79,5 @@ class EditExpenseActivity : BaseActivity<ActivityEditExpenseBinding>(R.layout.ac
       val destIntent = NotificationsActivity.getIntent(this, null)
       startActivity(destIntent)
     }
-  }
-
-  companion object {
-    const val TAG: String = "EDIT_EXPENSE_ACTIVITY"
-
   }
 }

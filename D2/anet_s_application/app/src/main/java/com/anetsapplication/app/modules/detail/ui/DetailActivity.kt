@@ -17,9 +17,11 @@ import com.anetsapplication.app.databinding.ActivityDetailBinding
 import com.anetsapplication.app.db.CommentDBHelper
 import com.anetsapplication.app.db.ExpensesDBHelper
 import com.anetsapplication.app.db.HouseholdDBHelper
+import com.anetsapplication.app.modules.addexpenseequally.ui.AddExpenseEquallyActivity
 import com.anetsapplication.app.modules.create.ui.CreateActivity
 import com.anetsapplication.app.modules.detail.data.model.DetailModel
 import com.anetsapplication.app.modules.detail.`data`.viewmodel.DetailVM
+import com.anetsapplication.app.modules.editexpense.ui.EditExpenseActivity
 import com.anetsapplication.app.modules.expenses.ui.ExpensesActivity
 import com.anetsapplication.app.modules.households.data.adapter.HouseholdsAdapter
 import com.anetsapplication.app.modules.households.data.model.HouseholdsModel
@@ -98,6 +100,14 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
       val destIntent = ExpensesActivity.getIntent(this, null)
       destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
       destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
+      startActivity(destIntent)
+    }
+    binding.imageEdit.setOnClickListener {
+      Log.e("EDIT", "activity")
+      val destIntent = AddExpenseEquallyActivity.getIntent(this, null)
+      destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+      destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
+      destIntent.putExtra("expense_id", intent.getStringExtra("expense_id"))
       startActivity(destIntent)
     }
     binding.imageTrash.setOnClickListener {
