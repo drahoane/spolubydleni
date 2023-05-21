@@ -58,6 +58,7 @@ class AddExpenseEquallyActivity :
     householdsHelper = HouseholdDBHelper(this)
     userdataHelper = UserdataDBHelper(this)
     householdUserDBHelper = HouseholdUserDBHelper(this)
+    debtDBHelper = DebtDBHelper(this)
 
     recyclerView = findViewById(R.id.recyclerMembers)
     initRecyclerView()

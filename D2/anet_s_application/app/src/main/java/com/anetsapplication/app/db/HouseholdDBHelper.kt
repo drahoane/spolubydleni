@@ -12,23 +12,40 @@ import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.ArrayList
 
-class HouseholdDBHelper(context: Context): SQLiteOpenHelper(context, "Household", null, 1) {
+class HouseholdDBHelper(context: Context): SQLiteOpenHelper(context, "Database", null, 3) {
     override fun onCreate(myDB: SQLiteDatabase?) {
+        myDB?.execSQL("create table Comment (comment_id INTEGER primary key autoincrement, comment_text TEXT, created_at TEXT, expense_id INTEGER, from_user_id INTEGER)")
+        myDB?.execSQL("create table Debt (expense_id INTEGER, user_id INTEGER, amount REAL, primary key (expense_id, user_id))")
+        myDB?.execSQL("create table Expense (expense_id INTEGER primary key autoincrement, expense_name TEXT, expense_cost REAL, currency TEXT, paid_by_id INTEGER, household_id INTEGER)")
         myDB?.execSQL("create table Household (household_id INTEGER primary key autoincrement, household_name TEXT, last_updated TEXT, owner_id INTEGER)")
+        myDB?.execSQL("create table Userdata (user_id INTEGER primary key autoincrement, username TEXT, password TEXT, email TEXT)")
+        myDB?.execSQL("create table HouseholdUser (household_id INTEGER, user_id INTEGER, primary key (household_id, user_id))")
     }
 
     override fun onUpgrade(myDB: SQLiteDatabase?, p1: Int, p2: Int) {
+        myDB?.execSQL("drop table if exists Comment")
+        myDB?.execSQL("drop table if exists Debt")
+        myDB?.execSQL("drop table if exists Expense")
         myDB?.execSQL("drop table if exists Household")
+        myDB?.execSQL("drop table if exists Userdata")
+        myDB?.execSQL("drop table if exists HouseholdUser")
+
+        onCreate(myDB)
     }
 
-    fun insertData(std: HouseholdsModel, owner_id: Int?) {
+    fun insertData(std: HouseholdsModel, owner_id: Int?): Int {
         val myDB = this.writableDatabase;
         val data = ContentValues();
         data.put("household_name", std.household_name);
         data.put("last_updated", std.household_date);
         data.put("owner_id", owner_id);
-        myDB.insert("Household", null, data);
+        val result = myDB.insert("Household", null, data);
+        if(result == (-1).toLong()) {
+            myDB.close()
+            return -1;
+        }
         myDB.close()
+        return result.toInt();
     }
 
     @SuppressLint("Range")
@@ -41,6 +58,7 @@ class HouseholdDBHelper(context: Context): SQLiteOpenHelper(context, "Household"
         try {
             cursor = myDB.rawQuery(query, null)
         } catch (e: Exception) {
+            myDB.close()
             e.printStackTrace()
             return ArrayList()
         }
@@ -63,6 +81,8 @@ class HouseholdDBHelper(context: Context): SQLiteOpenHelper(context, "Household"
                 stdList.add(std)
             } while (cursor.moveToNext())
         }
+
+        myDB.close()
         return stdList
     }
 
@@ -76,6 +96,7 @@ class HouseholdDBHelper(context: Context): SQLiteOpenHelper(context, "Household"
         try {
             cursor = myDB.rawQuery(query, null)
         } catch (e: Exception) {
+            myDB.close()
             e.printStackTrace()
             return ArrayList()
         }
@@ -98,6 +119,8 @@ class HouseholdDBHelper(context: Context): SQLiteOpenHelper(context, "Household"
                 stdList.add(std)
             } while (cursor.moveToNext())
         }
+
+        myDB.close()
         return stdList
     }
 

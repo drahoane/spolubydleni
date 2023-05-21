@@ -12,6 +12,7 @@ import com.anetsapplication.app.R
 import com.anetsapplication.app.appcomponents.base.BaseActivity
 import com.anetsapplication.app.databinding.ActivityCreateBinding
 import com.anetsapplication.app.db.HouseholdDBHelper
+import com.anetsapplication.app.db.HouseholdUserDBHelper
 import com.anetsapplication.app.db.UserdataDBHelper
 import com.anetsapplication.app.modules.create.`data`.viewmodel.CreateVM
 import com.anetsapplication.app.modules.households.data.model.HouseholdsModel
@@ -27,15 +28,18 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
   private val viewModel: CreateVM by viewModels<CreateVM>()
   private lateinit var household_name: EditText
   private lateinit var createBtn: Button
-  private lateinit var db: HouseholdDBHelper
-
+  private lateinit var householdDb: HouseholdDBHelper
+  private lateinit var householdUserDb: HouseholdUserDBHelper
+  private lateinit var userdataDBHelper: UserdataDBHelper
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     binding.createVM = viewModel
 
     household_name = findViewById(R.id.enterHousehold)
     createBtn = findViewById(R.id.btnCreate)
-    db = HouseholdDBHelper(this)
+    householdDb = HouseholdDBHelper(this)
+    householdUserDb = HouseholdUserDBHelper(this)
+    userdataDBHelper = UserdataDBHelper(this)
 
     createBtn.setOnClickListener {
       val householdText = household_name.text.toString();
@@ -45,7 +49,17 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
         Toast.makeText(this, "Fill out Household name.", Toast.LENGTH_SHORT).show()
       } else {
         val std = HouseholdsModel(household_name = householdText, household_date = date)
-        db.insertData(std, intent.getStringExtra("user_id")?.toInt())
+        val res = householdDb.insertData(std, intent.getStringExtra("user_id")?.toInt())
+        if (res != -1) {
+          householdUserDb.insertData(res.toString(), intent.getStringExtra("user_id"))
+
+          // add dummy user
+          var user1id = userdataDBHelper.getUserIdByName("Pepa Novak")
+          if (user1id == -1) {
+            user1id = userdataDBHelper.insertData("Pepa Novak", "none", "none")
+          }
+          householdUserDb.insertData(res.toString(), user1id.toString())
+        }
         Toast.makeText(this, "Household successfully created.", Toast.LENGTH_SHORT).show()
         val destIntent = HouseholdsActivity.getIntent(this, null)
         destIntent.putExtra("user_id", intent.getStringExtra("user_id"))

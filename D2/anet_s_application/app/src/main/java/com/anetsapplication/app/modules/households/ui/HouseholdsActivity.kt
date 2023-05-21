@@ -18,8 +18,6 @@ import com.anetsapplication.app.modules.expenses.ui.ExpensesActivity
 import com.anetsapplication.app.modules.households.data.adapter.HouseholdsAdapter
 import com.anetsapplication.app.modules.households.`data`.viewmodel.HouseholdsVM
 import com.anetsapplication.app.modules.notifications.ui.NotificationsActivity
-import com.anetsapplication.app.modules.overview.ui.OverviewActivity
-import com.anetsapplication.app.modules.profile.ui.ProfileActivity
 import kotlin.String
 import kotlin.Unit
 

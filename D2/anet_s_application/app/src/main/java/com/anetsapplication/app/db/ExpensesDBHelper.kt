@@ -10,15 +10,26 @@ import android.util.Log
 import com.anetsapplication.app.modules.expenses.data.model.ExpensesModel
 import java.util.*
 
-class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", null, 1) {
-        override fun onCreate(myDB: SQLiteDatabase?) {
-            myDB?.execSQL("create table Expenses (expense_id INTEGER primary key autoincrement, expense_name TEXT, " +
-                    "expense_cost REAL, currency TEXT, paid_by_id INTEGER, household_id INTEGER)")
-        }
+class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Database", null, 3) {
+    override fun onCreate(myDB: SQLiteDatabase?) {
+        myDB?.execSQL("create table Comment (comment_id INTEGER primary key autoincrement, comment_text TEXT, created_at TEXT, expense_id INTEGER, from_user_id INTEGER)")
+        myDB?.execSQL("create table Debt (expense_id INTEGER, user_id INTEGER, amount REAL, primary key (expense_id, user_id))")
+        myDB?.execSQL("create table Expense (expense_id INTEGER primary key autoincrement, expense_name TEXT, expense_cost REAL, currency TEXT, paid_by_id INTEGER, household_id INTEGER)")
+        myDB?.execSQL("create table Household (household_id INTEGER primary key autoincrement, household_name TEXT, last_updated TEXT, owner_id INTEGER)")
+        myDB?.execSQL("create table Userdata (user_id INTEGER primary key autoincrement, username TEXT, password TEXT, email TEXT)")
+        myDB?.execSQL("create table HouseholdUser (household_id INTEGER, user_id INTEGER, primary key (household_id, user_id))")
+    }
 
-        override fun onUpgrade(myDB: SQLiteDatabase?, p1: Int, p2: Int) {
-            myDB?.execSQL("drop table if exists Expenses")
-        }
+    override fun onUpgrade(myDB: SQLiteDatabase?, p1: Int, p2: Int) {
+        myDB?.execSQL("drop table if exists Comment")
+        myDB?.execSQL("drop table if exists Debt")
+        myDB?.execSQL("drop table if exists Expense")
+        myDB?.execSQL("drop table if exists Household")
+        myDB?.execSQL("drop table if exists Userdata")
+        myDB?.execSQL("drop table if exists HouseholdUser")
+
+        onCreate(myDB)
+    }
 
         // NAPR: expensesHelper.insertData("new shoes", 2.85, "CZK", 1, 1)
         fun insertData(expense_name: String, expense_cost: Double, currency: String, paid_by_id: Int, household_id: Int?): Long {
@@ -29,10 +40,12 @@ class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", n
             data.put("currency", currency);
             data.put("paid_by_id", paid_by_id);
             data.put("household_id", household_id);
-            val result = myDB.insert("Expenses", null, data);
+            val result = myDB.insert("Expense", null, data);
             if(result == (-1).toLong()) {
+                myDB.close()
                 return -1;
             }
+            myDB.close()
             return result;
         }
 
@@ -41,7 +54,7 @@ class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", n
             val data = ContentValues();
             data.put("expense_id", id)
 
-            myDB.delete("Expenses", "expense_id=$id", null)
+            myDB.delete("Expense", "expense_id=$id", null)
             myDB.close()
             Log.e("Removed Expense ID", id.toString())
         }
@@ -49,13 +62,14 @@ class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", n
         @SuppressLint("Range")
         fun getDataByExpenseID(expense_id: Int?): ArrayList<ExpensesModel> {
             val stdList: ArrayList<ExpensesModel> = ArrayList();
-            val query = "select * from Expenses where expense_id = '$expense_id'";
+            val query = "select * from Expense where expense_id = '$expense_id'";
             val myDB = this.readableDatabase;
             val cursor: Cursor?
 
             try {
                 cursor = myDB.rawQuery(query, null)
             } catch (e: Exception) {
+                myDB.close()
                 e.printStackTrace()
                 return ArrayList()
             }
@@ -84,18 +98,22 @@ class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", n
                     stdList.add(std)
                 } while (cursor.moveToNext())
             }
+
+            myDB.close()
             return stdList
         }
         @SuppressLint("Range")
         fun getDataByHouseholdID(household_id: Int?): ArrayList<ExpensesModel> {
             val stdList: ArrayList<ExpensesModel> = ArrayList();
-            val query = "select * from Expenses where household_id = '$household_id'";
+            val query = "select * from Expense where household_id = '$household_id'";
             val myDB = this.readableDatabase;
             val cursor: Cursor?
 
             try {
                 cursor = myDB.rawQuery(query, null)
             } catch (e: Exception) {
+                myDB.close()
+
                 e.printStackTrace()
                 return ArrayList()
             }
@@ -141,6 +159,7 @@ class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", n
                     stdList.add(std)
                 } while (cursor.moveToNext())
             }
+            myDB.close()
             return stdList
         }
 
@@ -155,7 +174,7 @@ class ExpensesDBHelper(context: Context):SQLiteOpenHelper(context, "Expenses", n
             values.put("paid_by_id", paid_by_id)
             values.put("household_id", household_id)
 
-            val result = db.update("Expenses", values, "expense_id=?", arrayOf(expense_id.toString()));
+            val result = db.update("Expense", values, "expense_id=?", arrayOf(expense_id.toString()));
             db.close()
         }
 

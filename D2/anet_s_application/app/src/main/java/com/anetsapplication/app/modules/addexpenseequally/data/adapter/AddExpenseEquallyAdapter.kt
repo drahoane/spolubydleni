@@ -54,7 +54,7 @@ class AddExpenseEquallyAdapter : RecyclerView.Adapter<AddExpenseEquallyAdapter.v
         var checkbox = view.findViewById<CheckBox>(R.id.checkbox)
 
         fun bindView(std:AddExpenseEquallyModel) {
-            member_name.text = std.member_name
+            member_name.text = std.username
         }
     }
 }

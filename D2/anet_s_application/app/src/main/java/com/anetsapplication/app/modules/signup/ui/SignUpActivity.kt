@@ -48,7 +48,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sig
         Toast.makeText(this, "Fill out all inputs.", Toast.LENGTH_SHORT).show()
       } else {
         if(passwordText == controlPasswordText) {
-          if(saveData) {
+          if(saveData != -1) {
             Toast.makeText(this, "Signup successful.", Toast.LENGTH_SHORT).show()
             val destIntent = LoginActivity.getIntent(this, null)
             startActivity(destIntent)
