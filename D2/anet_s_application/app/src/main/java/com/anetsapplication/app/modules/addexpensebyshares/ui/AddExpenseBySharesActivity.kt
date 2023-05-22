@@ -4,10 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import androidx.activity.viewModels
 import com.anetsapplication.app.R
 import com.anetsapplication.app.appcomponents.base.BaseActivity
 import com.anetsapplication.app.databinding.ActivityAddExpenseBySharesBinding
+import com.anetsapplication.app.db.ExpensesDBHelper
 import com.anetsapplication.app.modules.addexpensebyshares.`data`.model.Listavatars3dav1RowModel
 import com.anetsapplication.app.modules.addexpensebyshares.`data`.viewmodel.AddExpenseBySharesVM
 import com.anetsapplication.app.modules.addexpenseequally.ui.AddExpenseEquallyActivity
@@ -23,6 +26,12 @@ import kotlin.Unit
 class AddExpenseBySharesActivity :
     BaseActivity<ActivityAddExpenseBySharesBinding>(R.layout.activity_add_expense_by_shares) {
   private val viewModel: AddExpenseBySharesVM by viewModels<AddExpenseBySharesVM>()
+  private lateinit var expense_name: EditText
+  private lateinit var expense_cost: EditText
+  private lateinit var currency: EditText
+  private lateinit var paidBy: EditText
+  private lateinit var addBtn: Button
+  private lateinit var expensesDBHelper: ExpensesDBHelper
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
@@ -40,6 +49,23 @@ class AddExpenseBySharesActivity :
       listavatars3davAdapter.updateData(it)
     }*/
     binding.addExpenseBySharesVM = viewModel
+
+    expensesDBHelper = ExpensesDBHelper(this)
+
+    addBtn = findViewById(R.id.btnAddExpense)
+    expense_name = findViewById(R.id.enterExpenseName)
+    expense_cost = findViewById(R.id.enterExpenseCost)
+    currency = findViewById(R.id.enterCurrency)
+
+    if(intent.getStringExtra("expense_id")?.toInt() != null) {
+      addBtn.text = "Edit expense"
+      var stdList = expensesDBHelper.getDataByExpenseID(intent.getStringExtra("expense_id")?.toInt())
+      expense_name.setText(stdList[0].expense_name)
+      expense_cost.setText(stdList[0].expense_cost.toString())
+      currency.setText(stdList[0].currency)
+    } else {
+      addBtn.text = "Add expense"
+    }
   }
 
   override fun setUpClicks(): Unit {

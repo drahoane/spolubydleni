@@ -25,6 +25,7 @@ import com.anetsapplication.app.modules.addexpenseequally.data.adapter.AddExpens
 import com.anetsapplication.app.modules.addexpenseequally.data.model.AddExpenseEquallyModel
 import com.anetsapplication.app.modules.households.ui.HouseholdsActivity
 import com.anetsapplication.app.modules.notifications.ui.NotificationsActivity
+import java.lang.Double.parseDouble
 import kotlin.String
 import kotlin.Unit
 import kotlin.math.expm1
@@ -94,28 +95,38 @@ class AddExpenseEquallyActivity :
       if (TextUtils.isEmpty(name) || TextUtils.isEmpty(cost)  || TextUtils.isEmpty(currency)) {
         Toast.makeText(this, "Fill out all fields.", Toast.LENGTH_SHORT).show()
       } else {
-        var expenseId = intent.getStringExtra("expense_id")?.toLong()
-        if(intent.getStringExtra("expense_id")?.toInt() != null) {
-          Toast.makeText(this, "Expense successfully updated.", Toast.LENGTH_SHORT).show()
-          expensesDBHelper.editExpense(name, cost.toDouble(), currency, 1, intent.getStringExtra("household_id")?.toInt(), intent.getStringExtra("expense_id")?.toInt());
-        } else {
-          Toast.makeText(this, "Expense successfully created.", Toast.LENGTH_SHORT).show()
-          expenseId = expensesDBHelper.insertData(name, cost.toDouble(), currency, 0, intent.getStringExtra("household_id")?.toInt())
+        var numeric = true
+        try {
+          val num = parseDouble(cost)
+        } catch (e: NumberFormatException) {
+          numeric = false
         }
+        if(!numeric) {
+          Toast.makeText(this, "Cost must be a number.", Toast.LENGTH_SHORT).show()
+        } else {
+          var expenseId = intent.getStringExtra("expense_id")?.toLong()
+          if(intent.getStringExtra("expense_id")?.toInt() != null) {
+            Toast.makeText(this, "Expense successfully updated.", Toast.LENGTH_SHORT).show()
+            expensesDBHelper.editExpense(name, cost.toDouble(), currency, 1, intent.getStringExtra("household_id")?.toInt(), intent.getStringExtra("expense_id")?.toInt());
+          } else {
+            Toast.makeText(this, "Expense successfully created.", Toast.LENGTH_SHORT).show()
+            expenseId = expensesDBHelper.insertData(name, cost.toDouble(), currency, 0, intent.getStringExtra("household_id")?.toInt())
+          }
 
-        for (member in members) {
-          if (checkedList.contains(member.user_id)) {
-            if (expenseId != null) {
-              debtDBHelper.insertData(expenseId.toInt(), member.user_id, cost.toDouble()/checkedList.count())
+          for (member in members) {
+            if (checkedList.contains(member.user_id)) {
+              if (expenseId != null) {
+                debtDBHelper.insertData(expenseId.toInt(), member.user_id, cost.toDouble()/checkedList.count())
+              }
             }
           }
-        }
 
-        val destIntent = ExpensesActivity.getIntent(this, null)
-        destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
-        destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
-        startActivity(destIntent)
-      }
+          val destIntent = ExpensesActivity.getIntent(this, null)
+          destIntent.putExtra("user_id", intent.getStringExtra("user_id"))
+          destIntent.putExtra("household_id", intent.getStringExtra("household_id"))
+          startActivity(destIntent)
+        }
+        }
     }
   }
 
