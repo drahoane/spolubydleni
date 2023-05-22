@@ -138,7 +138,13 @@ class UserdataDBHelper(context: Context):SQLiteOpenHelper(context, "Database", n
             return -1
         }
         cursor.moveToFirst()
-        val res = cursor.getString(0)
+        var res = -1
+        try {
+            res = cursor.getInt(0)
+        } catch (e: Exception) {
+            return -1
+        }
+
         myDB.close()
         return res.toInt()
     }
